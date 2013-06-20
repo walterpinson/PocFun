@@ -19,8 +19,11 @@ namespace Core.Domain.Models
 
         public void Fill(JobApplicant personHired)
         {
-            PersonHired = personHired;
-            IsFilled = true;
+            if (null != personHired)
+            {
+                PersonHired = personHired;
+                IsFilled = true;
+            }|
         }
     }
 }
