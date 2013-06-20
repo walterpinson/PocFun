@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Core.Domain.Models
 {
@@ -23,7 +24,7 @@ namespace Core.Domain.Models
             {
                 PersonHired = personHired;
                 IsFilled = true;
-            }|
+            }
         }
     }
 }
