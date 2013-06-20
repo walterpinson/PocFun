@@ -40,13 +40,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Models\Address.cs" />
+    <Compile Include="Domain\Models\Job.cs" />
     <Compile Include="Domain\Models\JobApplicant.cs" />
     <Compile Include="Domain\Models\Name.cs" />
+    <Compile Include="Domain\Services\IJobApplicantRepository.cs" />
+    <Compile Include="Domain\Services\IJobRepository.cs" />
+    <Compile Include="Domain\Services\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Domain\Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
