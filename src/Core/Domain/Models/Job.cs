@@ -15,6 +15,7 @@ namespace Core.Domain.Models
 
         public Job()
         {
+            // TODO: intentionally not settig the Id here.  Will let the database handle that.  ...for now.
             IsFilled = false;
         }
 
