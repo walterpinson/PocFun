@@ -55,9 +55,9 @@ namespace Infrastructure.Data.SqlAzure
             {
                     return DataContext.Set<T>().Where(predicate);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //Log error
+                // TODO: Log error
             }
             return null;
         }
@@ -69,9 +69,9 @@ namespace Infrastructure.Data.SqlAzure
             {
                 return GetList(predicate).OrderBy(orderBy);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //Log error
+                // TODO: Log error
             }
             return null;
         }
@@ -82,9 +82,9 @@ namespace Infrastructure.Data.SqlAzure
             {
                 return GetList<T>().OrderBy(orderBy);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //Log error
+                // TODO: Log error
             }
             return null;
         }
@@ -95,9 +95,9 @@ namespace Infrastructure.Data.SqlAzure
             {
                 return DataContext.Set<T>();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //Log error
+                //TODO: Log error
             }
             return null;
         }
