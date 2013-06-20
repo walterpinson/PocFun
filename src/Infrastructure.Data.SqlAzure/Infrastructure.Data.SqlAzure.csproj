@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="EfProvider.cs" />
     <Compile Include="EfRepositoryBase.cs" />
+    <Compile Include="JobApplicantRepository.cs" />
     <Compile Include="OperationStatus.cs" />
     <Compile Include="PocFunDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
