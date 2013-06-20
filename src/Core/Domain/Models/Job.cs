@@ -12,10 +12,15 @@ namespace Core.Domain.Models
         public JobApplicant PersonHired { get; set; }
         public virtual IList<JobApplicant> Applicants {get;set;}
 
+        public Job()
+        {
+            IsFilled = false;
+        }
 
         public void Fill(JobApplicant personHired)
         {
             PersonHired = personHired;
+            IsFilled = true;
         }
     }
 }
