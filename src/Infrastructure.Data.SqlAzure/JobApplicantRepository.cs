@@ -12,7 +12,7 @@ namespace Infrastructure.Data.SqlAzure
     {
         public JobApplicant Get(Guid id)
         {
-            throw new NotImplementedException();
+            return Get<JobApplicant>(ja => ja.Id == id);
         }
 
         public JobApplicant Get(object id)
@@ -22,22 +22,34 @@ namespace Infrastructure.Data.SqlAzure
 
         public IQueryable<JobApplicant> GetAll()
         {
-            throw new NotImplementedException();
+            return GetList<JobApplicant>();
         }
 
-        public void Create(JobApplicant entity)
+        public JobApplicant Create(JobApplicant entity)
         {
-            throw new NotImplementedException();
+            var operation = Add<JobApplicant>(entity);
+            JobApplicant updatedApplicant = null;
+
+            if (operation.Status)
+                updatedApplicant = entity;
+
+            return updatedApplicant;
         }
 
-        public void Update(JobApplicant entity)
+        public JobApplicant Update(JobApplicant entity)
         {
-            throw new NotImplementedException();
+            var operation = Update<JobApplicant>(entity);
+            JobApplicant updatedApplicant = null;
+
+            if (operation.Status)
+                updatedApplicant = entity;
+
+            return updatedApplicant;
         }
 
         public void Delete(JobApplicant entity)
         {
-            throw new NotImplementedException();
+            Delete<JobApplicant>(entity);
         }
     }
 }
