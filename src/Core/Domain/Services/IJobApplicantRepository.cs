@@ -5,6 +5,6 @@ namespace Core.Domain.Services
 {
     public interface IJobApplicantRepository : IRepository<JobApplicant>
     {
-        JobApplicant Get(Guid id);
+        JobApplicant Get(string id);
     }
 }

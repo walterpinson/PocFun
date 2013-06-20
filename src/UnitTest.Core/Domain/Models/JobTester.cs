@@ -32,7 +32,7 @@ namespace UnitTest.Core.Domain.Models
         {
             // ARRANGE
             var candidate = Substitute.For<JobApplicant>();
-            candidate.Id = System.Guid.NewGuid();
+            candidate.Id = System.Guid.NewGuid().ToString();
             _subjectUnderTest = new Job();
 
             // ACT
