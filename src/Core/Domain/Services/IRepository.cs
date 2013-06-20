@@ -6,9 +6,10 @@ namespace Core.Domain.Services
     {
         T Get(object id);
         IQueryable<T> GetAll();
-        void Insert(T entity);
+        void Create(T entity);
+        void Update(T entity);
         void Delete(T entity);
-        void Attach(T entity);  // Update step 1
-        void SubmitChanges();   // Update step 2
+//        void Attach(T entity);  // Update step 1
+//        void SubmitChanges();   // Update step 2
     }
 }
