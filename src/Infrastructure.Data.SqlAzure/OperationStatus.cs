@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace Alekto.MiddleMan.Infrastructure.Data
+namespace Infrastructure.Data.SqlAzure
 {
     [DebuggerDisplay("Status: {Status}")]
     public class OperationStatus

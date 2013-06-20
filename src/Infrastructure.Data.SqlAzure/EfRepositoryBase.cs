@@ -4,7 +4,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Alekto.MiddleMan.Infrastructure.Data
+namespace Infrastructure.Data.SqlAzure
 {
     public class EfRepositoryBase<TC> : IDisposable
         where TC : DbContext, new()
