@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EfProvider.cs" />
     <Compile Include="EfRepositoryBase.cs" />
     <Compile Include="OperationStatus.cs" />
     <Compile Include="PocFunDbContext.cs" />
