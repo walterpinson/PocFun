@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="MongoDB.Driver">
       <HintPath>..\packages\mongocsharpdriver.1.8.1\lib\net35\MongoDB.Driver.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="MongoRepository">
       <HintPath>..\packages\MongoRepository.1.5.0\lib\MongoRepository.dll</HintPath>
