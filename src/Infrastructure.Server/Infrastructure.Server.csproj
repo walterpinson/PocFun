@@ -7,8 +7,8 @@
     <ProjectGuid>{AB42464C-0D88-4959-B1DD-C2C7052BC73F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Infrastructure.ApplicationServer</RootNamespace>
-    <AssemblyName>Infrastructure.ApplicationServer</AssemblyName>
+    <RootNamespace>Infrastructure.Server</RootNamespace>
+    <AssemblyName>Infrastructure.Server</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
