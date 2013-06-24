@@ -24,7 +24,7 @@ namespace Infrastructure.Data.SqlAzure
 
         public JobApplicant Create(JobApplicant entity)
         {
-            var operation = Add<JobApplicant>(entity);
+            var operation = Add(entity);
             JobApplicant updatedApplicant = null;
 
             if (operation.Status)
