@@ -34,6 +34,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Models\Address.cs" />
+    <Compile Include="Domain\Models\IJob.cs" />
     <Compile Include="Domain\Models\IJobApplicant.cs" />
     <Compile Include="Domain\Models\Job.cs" />
     <Compile Include="Domain\Models\JobApplicant.cs" />
