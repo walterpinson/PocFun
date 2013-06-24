@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{6658A7B9-43B4-4760-91F0-491ED010E108}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Data", "Infrastructure.Data\Infrastructure.Data.csproj", "{B1AEA183-9FE3-44B8-A7E4-A6F7D38EEABA}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Data.SqlAzure", "Infrastructure.Data.SqlAzure\Infrastructure.Data.SqlAzure.csproj", "{7685D9A5-D53A-40FD-8EB3-D325C95F6331}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Data.MongoDb", "Infrastructure.Data.MongoDb\Infrastructure.Data.MongoDb.csproj", "{ADA1C196-B9D2-40A8-99D0-986463655D48}"
@@ -34,10 +32,6 @@ Global
 		{6658A7B9-43B4-4760-91F0-491ED010E108}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6658A7B9-43B4-4760-91F0-491ED010E108}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6658A7B9-43B4-4760-91F0-491ED010E108}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B1AEA183-9FE3-44B8-A7E4-A6F7D38EEABA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B1AEA183-9FE3-44B8-A7E4-A6F7D38EEABA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B1AEA183-9FE3-44B8-A7E4-A6F7D38EEABA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B1AEA183-9FE3-44B8-A7E4-A6F7D38EEABA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7685D9A5-D53A-40FD-8EB3-D325C95F6331}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7685D9A5-D53A-40FD-8EB3-D325C95F6331}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7685D9A5-D53A-40FD-8EB3-D325C95F6331}.Release|Any CPU.ActiveCfg = Release|Any CPU
