@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="JobApplicantRepositoryTester.cs" />
+    <Compile Include="JobRepositoryTester.cs" />
     <Compile Include="PocFunDbContextTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

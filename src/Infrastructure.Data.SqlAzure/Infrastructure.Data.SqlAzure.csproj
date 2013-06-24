@@ -49,6 +49,7 @@
     <Compile Include="EfProvider.cs" />
     <Compile Include="EfRepositoryBase.cs" />
     <Compile Include="JobApplicantRepository.cs" />
+    <Compile Include="JobRepository.cs" />
     <Compile Include="OperationStatus.cs" />
     <Compile Include="PocFunDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,6 +63,9 @@
       <Project>{6658a7b9-43b4-4760-91f0-491ed010e108}</Project>
       <Name>Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
