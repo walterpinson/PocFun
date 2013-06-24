@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Core.Domain.Models
 {
-    public class Job
+    public class Job : IJob
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
