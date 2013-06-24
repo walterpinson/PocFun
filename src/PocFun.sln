@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Data.SqlAzur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Data.MongoDb", "Infrastructure.Data.MongoDb\Infrastructure.Data.MongoDb.csproj", "{ADA1C196-B9D2-40A8-99D0-986463655D48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocWebClient", "PocWebClient\PocWebClient.csproj", "{D4938F13-2607-4885-8636-E0DD3D0D4B66}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Client.PocFunWeb", "PocWebClient\Infrastructure.Client.PocFunWeb.csproj", "{D4938F13-2607-4885-8636-E0DD3D0D4B66}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{CE86DCD9-D794-49DD-958E-F9446D219135}"
 	ProjectSection(SolutionItems) = preProject
