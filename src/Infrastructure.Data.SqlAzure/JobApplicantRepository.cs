@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Core.Domain.Models;
 using Core.Domain.Services;
 
@@ -27,7 +24,7 @@ namespace Infrastructure.Data.SqlAzure
 
         public JobApplicant Create(JobApplicant entity)
         {
-            var operation = Add<JobApplicant>(entity);
+            var operation = Add(entity);
             JobApplicant updatedApplicant = null;
 
             if (operation.Status)
