@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.Domain.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Infrastructure.Data.SqlAzure
 {
@@ -18,6 +19,11 @@ namespace Infrastructure.Data.SqlAzure
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            // Ensure that the GUID IDs are autopopulated
+            modelBuilder.Entity<Job>().Property(o => o.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            modelBuilder.Entity<JobApplicant>().Property(o => o.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
+            // Configure components
             modelBuilder.ComplexType<Name>();
             modelBuilder.ComplexType<Address>();
 

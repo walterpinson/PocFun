@@ -7,7 +7,7 @@ namespace Infrastructure.Data.SqlAzure
 {
     public class JobApplicantRepository : EfRepositoryBase<PocFunDbContext>, IJobApplicantRepository
     {
-        public JobApplicant Get(string id)
+        public JobApplicant Get(Guid id)
         {
             return Get<JobApplicant>(ja => ja.Id == id);
         }
