@@ -15,7 +15,7 @@ namespace Infrastructure.Data.MongoDb
          * we will map between our Core.Models and MangoDb.Models.
          */
 
-        public JobApplicant Get(string id)
+        public JobApplicant Get(Guid id)
         {
             throw new NotImplementedException();
         }

@@ -42,8 +42,9 @@
       <HintPath>..\packages\mongocsharpdriver.1.8.1\lib\net35\MongoDB.Driver.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MongoRepository">
-      <HintPath>..\packages\MongoRepository.1.5.0\lib\MongoRepository.dll</HintPath>
+    <Reference Include="MongoRepository, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\MongoRepository\trunk\MongoRepository\bin\Debug\MongoRepository.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -55,12 +56,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="JobApplicantRepository.cs" />
+    <Compile Include="JobRepository.cs" />
+    <Compile Include="Models\MongoJob.cs" />
     <Compile Include="Models\MongoJobApplicant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Documentation.chm" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
