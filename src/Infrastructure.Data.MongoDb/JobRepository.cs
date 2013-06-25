@@ -1,20 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Core.Domain.Models;
 using Core.Domain.Services;
 using Infrastructure.Data.MongoDb.Models;
+using MongoDB.Driver;
 using MongoRepository;
 
 namespace Infrastructure.Data.MongoDb
 {
     public class JobRepository : MongoRepository<MongoJob>, IJobRepository
     {
+        public JobRepository(MongoUrl url) : base(url)
+        {
+        }
+
         public Job Get(Guid id)
         {
-            return GetById(id) as Job;
+            return GetById(id);
         }
 
         public Job Get(object id)
@@ -24,12 +26,12 @@ namespace Infrastructure.Data.MongoDb
 
         public IQueryable<Job> GetAll()
         {
-            return this as IQueryable<Job>;
+            return All() as IQueryable<Job>;
         }
 
         public Job Create(Job entity)
         {
-            return base.Add(entity as MongoJob);
+            return Add(entity as MongoJob);
         }
 
         public Job Update(Job entity)
