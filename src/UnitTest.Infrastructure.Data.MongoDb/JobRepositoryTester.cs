@@ -1,15 +1,8 @@
-﻿using System;
-using System.Configuration;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Configuration;
 using Core.Domain.Models;
 using Core.Domain.Services;
 using Infrastructure.Data.MongoDb;
 using NUnit.Framework;
-using NSubstitute;
-using MongoRepository;
 using MongoDB.Driver;
 
 namespace UnitTest.Infrastructure.Data.MongoDb
@@ -19,32 +12,33 @@ namespace UnitTest.Infrastructure.Data.MongoDb
     {
         private Job _job;
         private IJobRepository _subjectUnderTest;
+        private MongoUrl _mongoUrl;
 
         [TestFixtureSetUp]
         public void TestFixtureSetUp()
         {
-            this.DropDB();
+            _mongoUrl = new MongoUrl(ConfigurationManager.ConnectionStrings["MongoServerSettings"].ConnectionString);
+            DropDB();
         }
 
         [SetUp]
         public void Setup()
         {
-            _subjectUnderTest = new JobRepository();
+            _subjectUnderTest = new JobRepository(_mongoUrl);
         }
 
         [TearDown]
         public void Cleanup()
         {
-            this.DropDB();
+            DropDB();
             _job = null;
             _subjectUnderTest = null;
         }
 
         private void DropDB()
         {
-            var url = new MongoUrl(ConfigurationManager.ConnectionStrings["MongoServerSettings"].ConnectionString);
-            var client = new MongoClient(url);
-            client.GetServer().DropDatabase(url.DatabaseName);
+            var client = new MongoClient(_mongoUrl);
+            client.GetServer().DropDatabase(_mongoUrl.DatabaseName);
         }
 
         [Test]
