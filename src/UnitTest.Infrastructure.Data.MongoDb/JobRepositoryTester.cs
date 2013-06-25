@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using Core.Domain.Models;
 using Core.Domain.Services;
 using Infrastructure.Data.MongoDb;
@@ -55,6 +56,52 @@ namespace UnitTest.Infrastructure.Data.MongoDb
             // ASSERT
             Assert.That(added, Is.Not.Null);
             Assert.That(added.Id, Is.Not.Null);
+        }
+
+        public void CanGetJob()
+        {
+            // ARRANGE
+            _job = ConstructJob();
+            _subjectUnderTest.Create(_job);
+
+            // ACT
+            var retrieved = _subjectUnderTest.Get(_job.Id);
+
+            // ASSERT
+            Assert.That(retrieved, Is.Not.Null);
+            Assert.That(retrieved.Id, Is.EqualTo(_job.Id));
+        }
+
+        public void CanGetAllJobs()
+        {
+            // ARRANGE
+            _job = ConstructJob();
+            var job2 = ConstructJob();
+            _subjectUnderTest.Create(_job);
+            _subjectUnderTest.Create(job2);
+
+            // ACT
+            var retrieved = _subjectUnderTest.GetAll();
+
+            // ASSERT
+            Assert.That(retrieved, Is.Not.Null);
+        }
+
+        [Test]
+        public void CanDeleteJob()
+        {
+            // ARRANGE
+            _job = ConstructJob();
+            _subjectUnderTest.Create(_job);
+            var jobId = _job.Id;
+
+            // ACT
+            _subjectUnderTest.Delete(_job);
+            var retrieved = _subjectUnderTest.Get(jobId);
+
+            // ASSERT
+            Assert.That(jobId, Is.Not.EqualTo(Guid.Empty));
+            Assert.That(retrieved, Is.Null);
         }
 
         private Job ConstructJob()
