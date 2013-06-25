@@ -27,7 +27,7 @@ namespace Infrastructure.Data.MongoDb
 
         public IQueryable<Job> GetAll()
         {
-            return Mapper.Map<IQueryable<MongoJob>, IQueryable<Job>>(All());
+            return Mapper.Map<IQueryable<MongoJob>, IQueryable<Job>>(this);
         }
 
         public Job Create(Job entity)
