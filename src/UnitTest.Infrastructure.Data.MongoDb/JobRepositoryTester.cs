@@ -17,6 +17,8 @@ namespace UnitTest.Infrastructure.Data.MongoDb
         [TestFixtureSetUp]
         public void TestFixtureSetUp()
         {
+            MongoMapper.Configure();
+
             _mongoUrl = new MongoUrl(ConfigurationManager.ConnectionStrings["MongoServerSettings"].ConnectionString);
             DropDb();
         }
