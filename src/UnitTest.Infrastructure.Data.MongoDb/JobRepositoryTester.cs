@@ -18,7 +18,7 @@ namespace UnitTest.Infrastructure.Data.MongoDb
         public void TestFixtureSetUp()
         {
             _mongoUrl = new MongoUrl(ConfigurationManager.ConnectionStrings["MongoServerSettings"].ConnectionString);
-            DropDB();
+            DropDb();
         }
 
         [SetUp]
@@ -30,12 +30,12 @@ namespace UnitTest.Infrastructure.Data.MongoDb
         [TearDown]
         public void Cleanup()
         {
-            DropDB();
+            DropDb();
             _job = null;
             _subjectUnderTest = null;
         }
 
-        private void DropDB()
+        private void DropDb()
         {
             var client = new MongoClient(_mongoUrl);
             client.GetServer().DropDatabase(_mongoUrl.DatabaseName);
