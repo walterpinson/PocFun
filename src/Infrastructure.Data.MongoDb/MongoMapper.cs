@@ -10,6 +10,9 @@ namespace Infrastructure.Data.MongoDb
         {
             Mapper.CreateMap<Job, MongoJob>();
             Mapper.CreateMap<MongoJob, Job>();
+
+            Mapper.CreateMap<JobApplicant, MongoJobApplicant>();
+            Mapper.CreateMap<MongoJobApplicant, JobApplicant>();
         }
     }
 }
