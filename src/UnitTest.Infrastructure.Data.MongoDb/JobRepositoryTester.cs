@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Configuration;
 using Core.Domain.Models;
 using Core.Domain.Services;
@@ -56,35 +57,43 @@ namespace UnitTest.Infrastructure.Data.MongoDb
             // ASSERT
             Assert.That(added, Is.Not.Null);
             Assert.That(added.Id, Is.Not.Null);
+            Assert.That(added.Id, Is.Not.EqualTo(Guid.Empty));
         }
 
+        [Test]
         public void CanGetJob()
         {
             // ARRANGE
             _job = ConstructJob();
-            _subjectUnderTest.Create(_job);
+            var created = _subjectUnderTest.Create(_job);
 
             // ACT
-            var retrieved = _subjectUnderTest.Get(_job.Id);
+            var retrieved = _subjectUnderTest.Get(created.Id);
 
             // ASSERT
             Assert.That(retrieved, Is.Not.Null);
-            Assert.That(retrieved.Id, Is.EqualTo(_job.Id));
+            Assert.That(retrieved.Id, Is.EqualTo(created.Id));
         }
 
+        [Test]
         public void CanGetAllJobs()
         {
             // ARRANGE
             _job = ConstructJob();
             var job2 = ConstructJob();
-            _subjectUnderTest.Create(_job);
-            _subjectUnderTest.Create(job2);
+            var created1 = _subjectUnderTest.Create(_job);
+            var created2 = _subjectUnderTest.Create(job2);
+            
 
             // ACT
-            var retrieved = _subjectUnderTest.GetAll();
+            IQueryable<Job> retrieved = _subjectUnderTest.GetAll();
+            var retrieved1 = retrieved.Where(j => j.Id == created1.Id);
+            var retrieved2 = retrieved.Where(j => j.Id == created2.Id);
 
             // ASSERT
             Assert.That(retrieved, Is.Not.Null);
+            Assert.That(retrieved1, Is.Not.Null);
+            Assert.That(retrieved2, Is.Not.Null);
         }
 
         [Test]

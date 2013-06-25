@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Core.Domain.Models;
 using Core.Domain.Services;
@@ -27,21 +28,26 @@ namespace Infrastructure.Data.MongoDb
 
         public IQueryable<Job> GetAll()
         {
-            return Mapper.Map<IQueryable<MongoJob>, IQueryable<Job>>(this);
+            IList<MongoJob> mongoJobList
+                = this.Where(u => u.Id != Guid.Empty).ToList();
+            var jobList = Mapper.Map<IList<MongoJob>, IList<Job>>(mongoJobList);
+            return jobList.AsQueryable();
         }
 
         public Job Create(Job entity)
         {
             var mongoEntity = Mapper.Map<MongoJob>(entity);
             var returned = Add(mongoEntity);
-            return Mapper.Map<Job>(returned);
+            entity = Mapper.Map<Job>(returned);
+            return entity;
         }
 
         public Job Update(Job entity)
         {
             var mongoEntity = Mapper.Map<MongoJob>(entity);
             var returned =  base.Update(mongoEntity);
-            return Mapper.Map<Job>(returned);
+            entity = Mapper.Map<Job>(returned);
+            return entity;
         }
 
         public void Delete(Job entity)
