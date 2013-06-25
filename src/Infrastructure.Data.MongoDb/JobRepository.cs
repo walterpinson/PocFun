@@ -3,6 +3,7 @@ using System.Linq;
 using Core.Domain.Models;
 using Core.Domain.Services;
 using Infrastructure.Data.MongoDb.Models;
+using AutoMapper;
 using MongoDB.Driver;
 using MongoRepository;
 
@@ -16,7 +17,7 @@ namespace Infrastructure.Data.MongoDb
 
         public Job Get(Guid id)
         {
-            return GetById(id);
+            return Mapper.Map<Job>(GetById(id));
         }
 
         public Job Get(object id)
@@ -26,22 +27,26 @@ namespace Infrastructure.Data.MongoDb
 
         public IQueryable<Job> GetAll()
         {
-            return All() as IQueryable<Job>;
+            return Mapper.Map<IQueryable<MongoJob>, IQueryable<Job>>(All());
         }
 
         public Job Create(Job entity)
         {
-            return Add(entity as MongoJob);
+            var mongoEntity = Mapper.Map<MongoJob>(entity);
+            var returned = Add(mongoEntity);
+            return Mapper.Map<Job>(returned);
         }
 
         public Job Update(Job entity)
         {
-            return base.Update(entity as MongoJob);
+            var mongoEntity = Mapper.Map<MongoJob>(entity);
+            var returned =  base.Update(mongoEntity);
+            return Mapper.Map<Job>(returned);
         }
 
         public void Delete(Job entity)
         {
-            base.Delete(entity as MongoJob);
+            Delete(entity.Id);
         }
     }
 }
