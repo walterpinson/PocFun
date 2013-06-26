@@ -34,9 +34,13 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\Messages\JobApplicantDto.cs" />
     <Compile Include="Application\Messages\JobApplicationDto.cs" />
     <Compile Include="Application\Messages\JobDto.cs" />
+    <Compile Include="Application\Services\IApplicantManager.cs" />
+    <Compile Include="Application\Services\IJobManager.cs" />
     <Compile Include="Application\Services\IRecruiter.cs" />
+    <Compile Include="Application\Services\ITokenService.cs" />
     <Compile Include="Domain\Models\Address.cs" />
     <Compile Include="Domain\Models\IJob.cs" />
     <Compile Include="Domain\Models\IJobApplicant.cs" />
