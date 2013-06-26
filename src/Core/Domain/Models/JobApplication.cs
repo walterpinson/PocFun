@@ -10,8 +10,10 @@ namespace Core.Domain.Models
     {
         public Guid Id { get; set; }
         public DateTime Date { get; set; }
-        public JobApplicant Applicant { get; set; }
-        public Job Position { get; set; }
+        public virtual JobApplicant Applicant { get; set; }
+        public Guid ApplicantId { get; set; }
+        public virtual Job Position { get; set; }
+        public Guid PositionId { get; set; }
 
         public JobApplication()
         {
