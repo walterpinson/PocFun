@@ -9,7 +9,7 @@ namespace UnitTest.Infrastructure.Data.SqlAzure
         private PocFunDbContext _context;
 
         [TestFixtureSetUp]
-        private void TestFixtureSetup()
+        public void TestFixtureSetup()
         {
         }
 
