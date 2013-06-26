@@ -121,7 +121,7 @@ namespace UnitTest.Infrastructure.Data.SqlAzure
                     Title = "Chief Happy Officer",
                     IsFilled = false,
                     Salary = 395000m,
-                    Applicants = null,
+                    Applications = null,
                     PersonHired = null
                 };
 

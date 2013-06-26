@@ -139,7 +139,7 @@ namespace UnitTest.Infrastructure.Data.MongoDb
                 Title = "Chief Happy Officer",
                 IsFilled = false,
                 Salary = 395000m,
-                Applicants = null,
+                Applications = null,
                 PersonHired = null
             };
 
