@@ -47,6 +47,7 @@
     <Compile Include="Domain\Models\Name.cs" />
     <Compile Include="Domain\Services\IJobApplicantRepository.cs" />
     <Compile Include="Domain\Services\IJobRepository.cs" />
+    <Compile Include="Domain\Services\Impl\ApplyForJobsService.cs" />
     <Compile Include="Domain\Services\IRepository.cs" />
     <Compile Include="Domain\Services\IApplyForJobsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
