@@ -19,15 +19,21 @@ namespace Core.Domain.Models
             IsFilled = false;
         }
 
-        public void AcceptApplication(JobApplication application)
+        public bool AcceptApplication(JobApplication application)
         {
+            var accepted = false;
+
             if (null == application)
                 throw new Exception();
 
             if (null == Applications)
                 Applications = new List<JobApplication>();
 
+            application.Position = this;
             Applications.Add(application);
+            accepted = true;
+
+            return accepted;
         }
 
         public void Fill(JobApplicant personHired)
