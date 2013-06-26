@@ -3,6 +3,7 @@ using System.Linq;
 using Core.Domain.Models;
 using Core.Domain.Services;
 using Infrastructure.Data.MongoDb.Models;
+using MongoDB.Driver;
 using MongoRepository;
 
 namespace Infrastructure.Data.MongoDb
@@ -14,6 +15,10 @@ namespace Infrastructure.Data.MongoDb
          * IEntity; which decorates the Id field with attributes.  We must not pollute our domain model, so 
          * we will map between our Core.Models and MangoDb.Models.
          */
+
+        public JobApplicantRepository(MongoUrl url) : base(url)
+        {
+        }
 
         public JobApplicant Get(Guid id)
         {
