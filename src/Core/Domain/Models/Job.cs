@@ -11,12 +11,23 @@ namespace Core.Domain.Models
         public bool IsFilled { get; set; }
         public Guid? PersonHiredId { get; set; }
         public virtual JobApplicant PersonHired { get; set; }
-        public virtual IList<JobApplicant> Applicants {get;set;}
+        public virtual IList<JobApplication> Applications { get; set; }
 
         public Job()
         {
             // TODO: intentionally not settig the Id here.  Will let the database handle that.  ...for now.
             IsFilled = false;
+        }
+
+        public void AcceptApplication(JobApplication application)
+        {
+            if (null == application)
+                throw new Exception();
+
+            if (null == Applications)
+                Applications = new List<JobApplication>();
+
+            Applications.Add(application);
         }
 
         public void Fill(JobApplicant personHired)

@@ -9,7 +9,9 @@ namespace Core.Domain.Models
         string Title { get; set; }
         decimal Salary { get; set; }
         bool IsFilled { get; set; }
-        IList<JobApplicant> Applicants { get; set; }
+        IList<JobApplication> Applications { get; set; }
         JobApplicant PersonHired { get; set; }
+        void AcceptApplication(JobApplication application);
+        void Fill(JobApplicant personHired);
     }
 }
