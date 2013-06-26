@@ -23,7 +23,7 @@ namespace UnitTest.Infrastructure.Data.SqlAzure
             _context.Database.Initialize(true);
 
             // ASSERT
-            Assert.NotNull(_context.Database.Connection);
+            Assert.That(_context.Database.Connection, Is.Not.Null);
         }
     }
 }
