@@ -101,15 +101,14 @@ namespace UnitTest.Infrastructure.Data.MongoDb
         {
             // ARRANGE
             _job = ConstructJob();
-            _subjectUnderTest.Create(_job);
-            var jobId = _job.Id;
+            var created = _subjectUnderTest.Create(_job);
 
             // ACT
-            _subjectUnderTest.Delete(_job);
-            var retrieved = _subjectUnderTest.Get(jobId);
+            _subjectUnderTest.Delete(created);
+            var retrieved = _subjectUnderTest.Get(created.Id);
 
             // ASSERT
-            Assert.That(jobId, Is.Not.EqualTo(Guid.Empty));
+            Assert.That(created.Id, Is.Not.EqualTo(Guid.Empty));
             Assert.That(retrieved, Is.Null);
         }
 
