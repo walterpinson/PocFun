@@ -62,6 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JobApplicantRepositoryTester.cs" />
     <Compile Include="JobRepositoryTester.cs" />
     <Compile Include="MongoMapperTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
