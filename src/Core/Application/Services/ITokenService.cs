@@ -8,7 +8,7 @@ namespace Core.Application.Services
 {
     public interface ITokenService
     {
-        string Generate(string userId, string ipAddress, string userAgent);
-        bool Validate(string token);
+        string Generate(string userId, string ipAddress);
+        bool Validate(string token, string userId, string ipAddress);
     }
 }

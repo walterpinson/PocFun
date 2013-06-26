@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Security.Cryptography;
 using Core.Application.Services;
 
@@ -10,9 +6,19 @@ namespace Infrastructure.Server
 {
     public class TokenService : ITokenService
     {
+        private byte[] _secretKeyHmac;
+        private byte[] _secretKeyEncryption;
+
+        #region Implementation of ITokenService
+
         public string Generate(string userId, string ipAddress)
         {
-            throw new NotImplementedException();
+            _secretKeyHmac = new byte[64];
+            using(var rng = new RNGCryptoServiceProvider())
+            {
+                // Fill the array with cryptographically strong random bytes
+                rng.GetBytes(_secretKeyHmac);
+            }
         }
 
         /// <summary>
@@ -27,6 +33,10 @@ namespace Infrastructure.Server
         public bool Validate(string token, string userId, string ipAddress)
         {
             throw new NotImplementedException();
+   
         }
+
+        #endregion
+
     }
 }
