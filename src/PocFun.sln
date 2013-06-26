@@ -18,8 +18,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest.Infrastructure.Dat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest.Infrastructure.Data.MongoDb", "UnitTest.Infrastructure.Data.MongoDb\UnitTest.Infrastructure.Data.MongoDb.csproj", "{584AE52B-EF1B-45CF-AA04-2163B7668DAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Client.PocFunWeb", "Infrastructure.Client.PocFunWeb\Infrastructure.Client.PocFunWeb.csproj", "{D4938F13-2607-4885-8636-E0DD3D0D4B66}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Server", "Infrastructure.Server\Infrastructure.Server.csproj", "{AB42464C-0D88-4959-B1DD-C2C7052BC73F}"
 EndProject
 Global
@@ -48,10 +46,6 @@ Global
 		{584AE52B-EF1B-45CF-AA04-2163B7668DAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{584AE52B-EF1B-45CF-AA04-2163B7668DAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{584AE52B-EF1B-45CF-AA04-2163B7668DAE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D4938F13-2607-4885-8636-E0DD3D0D4B66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D4938F13-2607-4885-8636-E0DD3D0D4B66}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D4938F13-2607-4885-8636-E0DD3D0D4B66}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D4938F13-2607-4885-8636-E0DD3D0D4B66}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AB42464C-0D88-4959-B1DD-C2C7052BC73F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AB42464C-0D88-4959-B1DD-C2C7052BC73F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB42464C-0D88-4959-B1DD-C2C7052BC73F}.Release|Any CPU.ActiveCfg = Release|Any CPU
