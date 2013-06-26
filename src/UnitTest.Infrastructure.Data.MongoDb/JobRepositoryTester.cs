@@ -97,6 +97,26 @@ namespace UnitTest.Infrastructure.Data.MongoDb
         }
 
         [Test]
+        public void CanUpdateJob()
+        {
+            // ARRANGE
+            _job = ConstructJob();
+            var created = _subjectUnderTest.Create(_job);
+            var retrieved = _subjectUnderTest.Get(created.Id);
+            var newTitle = "Better BIGGER New Title";
+            retrieved.Title = newTitle;
+
+
+            // ACT
+            var updated = _subjectUnderTest.Update(retrieved);
+
+            // ASSERT
+            Assert.That(updated, Is.Not.Null);
+            Assert.That(updated.Id, Is.EqualTo(created.Id));
+            Assert.That(updated.Title, Is.EqualTo(newTitle));
+        }
+
+        [Test]
         public void CanDeleteJob()
         {
             // ARRANGE
