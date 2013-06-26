@@ -30,18 +30,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\Messages\JobApplicationDto.cs" />
+    <Compile Include="Application\Messages\JobDto.cs" />
+    <Compile Include="Application\Services\IRecruiter.cs" />
     <Compile Include="Domain\Models\Address.cs" />
     <Compile Include="Domain\Models\IJob.cs" />
     <Compile Include="Domain\Models\IJobApplicant.cs" />
+    <Compile Include="Domain\Models\IJobApplication.cs" />
     <Compile Include="Domain\Models\Job.cs" />
     <Compile Include="Domain\Models\JobApplicant.cs" />
+    <Compile Include="Domain\Models\JobApplication.cs" />
     <Compile Include="Domain\Models\Name.cs" />
     <Compile Include="Domain\Services\IJobApplicantRepository.cs" />
     <Compile Include="Domain\Services\IJobRepository.cs" />
     <Compile Include="Domain\Services\IRepository.cs" />
+    <Compile Include="Domain\Services\IApplyForJobsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
