@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Core.Domain.Models;
 using Core.Domain.Services;
 using Infrastructure.Data.MongoDb.Models;
 using MongoDB.Driver;
 using MongoRepository;
+using AutoMapper;
 
 namespace Infrastructure.Data.MongoDb
 {
@@ -22,7 +24,7 @@ namespace Infrastructure.Data.MongoDb
 
         public JobApplicant Get(Guid id)
         {
-            throw new NotImplementedException();
+            return Mapper.Map<JobApplicant>(GetById(id));
         }
 
         public JobApplicant Get(object id)
@@ -32,22 +34,31 @@ namespace Infrastructure.Data.MongoDb
 
         public IQueryable<JobApplicant> GetAll()
         {
-            throw new NotImplementedException();
+            IList<MongoJobApplicant> mongoJobApplicantList
+                = this.Where(u => u.Id != Guid.Empty).ToList();
+            var jobApplicantList = Mapper.Map<IList<MongoJobApplicant>, IList<JobApplicant>>(mongoJobApplicantList);
+            return jobApplicantList.AsQueryable();
         }
 
         public JobApplicant Create(JobApplicant entity)
         {
-            throw new NotImplementedException();
+            var mongoEntity = Mapper.Map<MongoJobApplicant>(entity);
+            var returned = Add(mongoEntity);
+            entity = Mapper.Map<JobApplicant>(returned);
+            return entity;
         }
 
         public JobApplicant Update(JobApplicant entity)
         {
-            throw new NotImplementedException();
+            var mongoEntity = Mapper.Map<MongoJobApplicant>(entity);
+            var returned = base.Update(mongoEntity);
+            entity = Mapper.Map<JobApplicant>(returned);
+            return entity;
         }
 
         public void Delete(JobApplicant entity)
         {
-            throw new NotImplementedException();
+            Delete(entity.Id);
         }
     }
 }
