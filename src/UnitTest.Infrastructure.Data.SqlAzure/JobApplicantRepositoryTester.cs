@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using NUnit.Framework;
 using Core.Domain.Models;
 using Core.Domain.Services;
@@ -9,7 +10,7 @@ namespace UnitTest.Infrastructure.Data.SqlAzure
     [TestFixture]
     public class JobApplicantRepositoryTester
     {
-        private JobApplicant _applicant;
+        private JobApplicant _jobApplicant;
         private IJobApplicantRepository _subjectUnderTest;
 
         [SetUp]
@@ -21,7 +22,7 @@ namespace UnitTest.Infrastructure.Data.SqlAzure
         [TearDown]
         public void TearDown()
         {
-            _applicant = null;
+            _jobApplicant = null;
             _subjectUnderTest = null;
         }
 
@@ -29,61 +30,87 @@ namespace UnitTest.Infrastructure.Data.SqlAzure
         public void CanAddJobApplicant()
         {
             // ARRANGE
-            _applicant = ConstructJobApplicant();
+            _jobApplicant = ConstructJobApplicant();
 
             // ACT
-            var added = _subjectUnderTest.Create(_applicant);
+            var added = _subjectUnderTest.Create(_jobApplicant);
 
             // ASSERT
             Assert.That(added, Is.Not.Null);
             Assert.That(added.Id, Is.Not.Null);
+            Assert.That(added.Id, Is.Not.EqualTo(Guid.Empty));
         }
 
         [Test]
         public void CanGetJobApplicant()
         {
             // ARRANGE
-            var added = _subjectUnderTest.Create(ConstructJobApplicant());
+            _jobApplicant = ConstructJobApplicant();
+            var created = _subjectUnderTest.Create(_jobApplicant);
 
             // ACT
-            var retrieved = _subjectUnderTest.Get(added.Id);
+            var retrieved = _subjectUnderTest.Get(created.Id);
 
             // ASSERT
             Assert.That(retrieved, Is.Not.Null);
-            Assert.That(retrieved.Id, Is.EqualTo(added.Id));
+            Assert.That(retrieved.Id, Is.EqualTo(created.Id));
+        }
+
+        [Test]
+        public void CanGetAllJobApplicants()
+        {
+            // ARRANGE
+            _jobApplicant = ConstructJobApplicant();
+            var job2 = ConstructJobApplicant();
+            var created1 = _subjectUnderTest.Create(_jobApplicant);
+            var created2 = _subjectUnderTest.Create(job2);
+
+
+            // ACT
+            IQueryable<JobApplicant> retrieved = _subjectUnderTest.GetAll();
+            var retrieved1 = retrieved.Where(j => j.Id == created1.Id);
+            var retrieved2 = retrieved.Where(j => j.Id == created2.Id);
+
+            // ASSERT
+            Assert.That(retrieved, Is.Not.Null);
+            Assert.That(retrieved1, Is.Not.Null);
+            Assert.That(retrieved2, Is.Not.Null);
         }
 
         [Test]
         public void CanUpdateJobApplicant()
         {
             // ARRANGE
-            var updatedPhoneNumber = "999-999-9999";
-            _applicant = ConstructJobApplicant();
-            _subjectUnderTest.Create(_applicant);
-            _applicant.PhoneNumber = updatedPhoneNumber;
+            _jobApplicant = ConstructJobApplicant();
+            var created = _subjectUnderTest.Create(_jobApplicant);
+            var retrieved = _subjectUnderTest.Get(created.Id);
+            var newName = new Name { First = "NEW", Last = "NewLast" };
+            retrieved.Name = newName;
+
 
             // ACT
-            var updated = _subjectUnderTest.Create(_applicant);
+            var updated = _subjectUnderTest.Update(retrieved);
 
             // ASSERT
             Assert.That(updated, Is.Not.Null);
-            Assert.That(updated.PhoneNumber, Is.EqualTo(updatedPhoneNumber));
+            Assert.That(updated.Id, Is.EqualTo(created.Id));
+            Assert.That(updated.Name, Is.EqualTo(newName));
         }
 
         [Test]
-        [ExpectedException(typeof(Exception))]
         public void CanDeleteJobApplicant()
         {
             // ARRANGE
-            _applicant = ConstructJobApplicant();
-            var added = _subjectUnderTest.Create(_applicant);
+            _jobApplicant = ConstructJobApplicant();
+            var created = _subjectUnderTest.Create(_jobApplicant);
 
             // ACT
-            _subjectUnderTest.Delete(added);
-            _subjectUnderTest.Get(_applicant.Id);
+            _subjectUnderTest.Delete(created);
+            var retrieved = _subjectUnderTest.Get(created.Id);
 
             // ASSERT
-            // An exception should be thrown
+            Assert.That(created.Id, Is.Not.EqualTo(Guid.Empty));
+            Assert.That(retrieved, Is.Null);
         }
 
         private JobApplicant ConstructJobApplicant()
