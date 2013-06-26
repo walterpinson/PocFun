@@ -48,5 +48,26 @@ namespace UnitTest.Infrastructure.Data.MongoDb
             client.GetServer().DropDatabase(_mongoUrl.DatabaseName);
         }
 
+        private JobApplicant ConstructJobApplicant()
+        {
+            var name = new Name {First = "John", Last = "Doe"};
+            var address = new Address
+                {
+                    Street = "21 Jump Street",
+                    City = "Your City",
+                    State = "NJ",
+                    Zip = "00123"
+                };
+
+            var jobApplicant = new JobApplicant
+                {
+                    Name = name,
+                    Address = address,
+                    PhoneNumber = "222-111-1234"
+                };
+
+
+            return jobApplicant;
+        }
     }
 }
