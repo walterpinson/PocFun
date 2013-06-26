@@ -18,6 +18,9 @@ namespace Infrastructure.Server
 
             Mapper.CreateMap<JobApplicant, JobApplicantDto>();
             Mapper.CreateMap<JobApplicantDto, JobApplicant>();
+
+            Mapper.CreateMap<JobApplication, JobApplicationDto>();
+            Mapper.CreateMap<JobApplicationDto, JobApplication>();
         }
     }
 }
