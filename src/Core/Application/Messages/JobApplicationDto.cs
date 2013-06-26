@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Core.Domain.Models;
 
 namespace Core.Application.Messages
 {
-    public class JobApplicantDto
+    public class JobApplicationDto
     {
-        Guid Id { get; set; }
-        Address Address { get; set; }
-        Name Name { get; set; }
-        string PhoneNumber { get; set; }
+        public Guid Id { get; set; }
+        public DateTime Date { get; set; }
+        public virtual JobApplicantDto Applicant { get; set; }
+        public virtual JobDto Position { get; set; }
     }
 }
