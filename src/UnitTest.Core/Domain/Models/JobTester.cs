@@ -42,5 +42,22 @@ namespace UnitTest.Core.Domain.Models
             Assert.That(_subjectUnderTest.IsFilled, Is.True);
             Assert.That(_subjectUnderTest.PersonHired, Is.EqualTo(candidate));
         }
+
+        [Test]
+        public void CanAcceptApplication()
+        {
+            // ARRANGE
+            var application = Substitute.For<JobApplication>();
+            application.Id = System.Guid.NewGuid();
+            _subjectUnderTest = new Job();
+
+            // ACT
+            _subjectUnderTest.AcceptApplication(application);
+
+            // ASSERT
+            Assert.That(_subjectUnderTest.Applications, Is.Not.Null);
+            Assert.That(_subjectUnderTest.Applications.Count, Is.EqualTo(1));
+            Assert.That(_subjectUnderTest.Applications[0], Is.EqualTo(application));
+        }
     }
 }

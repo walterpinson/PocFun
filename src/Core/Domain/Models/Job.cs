@@ -36,13 +36,18 @@ namespace Core.Domain.Models
             return accepted;
         }
 
-        public void Fill(JobApplicant personHired)
+        public bool Fill(JobApplicant personHired)
         {
-            if (null != personHired)
-            {
-                PersonHired = personHired;
-                IsFilled = true;
-            }
+            if (IsFilled)
+                throw new Exception();
+
+            if (null == personHired)
+                throw new Exception();
+
+            PersonHired = personHired;
+            IsFilled = true;
+
+            return IsFilled;
         }
     }
 }
