@@ -13,6 +13,7 @@ namespace Core.Application.Services
         IList<JobDto> GetJobs();
         IList<JobApplicantDto> GetApplicants();
         IList<JobApplicantDto> GetApplicants(Guid jobId);
+        IList<JobApplicationDto> GetApplications(Guid jobId);
 
         void Apply(JobDto job, JobApplicantDto applicant);
         void Hire(JobDto job, JobApplicantDto applicant);
