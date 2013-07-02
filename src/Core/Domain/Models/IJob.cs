@@ -13,5 +13,6 @@ namespace Core.Domain.Models
         JobApplicant PersonHired { get; set; }
         bool AcceptApplication(JobApplication application);
         bool Fill(JobApplicant personHired);
+        IList<JobApplicant> GetApplicants();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Core.Domain.Models
 {
@@ -21,7 +22,7 @@ namespace Core.Domain.Models
 
         public bool AcceptApplication(JobApplication application)
         {
-            var accepted = false;
+            var accepted = true;
 
             if (null == application)
                 throw new Exception();
@@ -29,9 +30,15 @@ namespace Core.Domain.Models
             if (null == Applications)
                 Applications = new List<JobApplication>();
 
-            application.Position = this;
-            Applications.Add(application);
-            accepted = true;
+            try
+            {
+                application.Position = this;
+                Applications.Add(application);
+            }
+            catch(Exception)
+            {
+                accepted = false;
+            }
 
             return accepted;
         }
@@ -49,5 +56,10 @@ namespace Core.Domain.Models
 
             return IsFilled;
         }
+
+        public IList<JobApplicant> GetApplicants()
+        {
+            return Applications.Select(app => app.Applicant).ToList();
+        } 
     }
 }
