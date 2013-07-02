@@ -11,9 +11,9 @@ namespace Infrastructure.Server
 {
     public class Recruiter : IRecruiter
     {
-        private IApplyForJobsService _applyForJobsService;
-        private IJobApplicantRepository _jobApplicantRepository;
-        private IJobRepository _jobRepository;
+        private readonly IApplyForJobsService _applyForJobsService;
+        private readonly IJobApplicantRepository _jobApplicantRepository;
+        private readonly IJobRepository _jobRepository;
 
         public Recruiter(IApplyForJobsService applyForJobsService, IJobRepository jobRepo, IJobApplicantRepository jobApplicantRepo)
         {
