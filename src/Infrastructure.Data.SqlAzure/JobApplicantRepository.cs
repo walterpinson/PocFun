@@ -35,7 +35,7 @@ namespace Infrastructure.Data.SqlAzure
 
         public JobApplicant Update(JobApplicant entity)
         {
-            var operation = Save<JobApplicant>(entity);
+            var operation = Save(entity);
             JobApplicant updatedApplicant = null;
 
             if (operation.Status)

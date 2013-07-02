@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Core.Domain.Models
 {
-    interface IJobApplication
+    public interface IJobApplication
     {
         JobApplicant Applicant { get; set; }
         DateTime Date { get; set; }
