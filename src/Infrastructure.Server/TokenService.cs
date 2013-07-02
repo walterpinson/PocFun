@@ -19,6 +19,7 @@ namespace Infrastructure.Server
                 // Fill the array with cryptographically strong random bytes
                 rng.GetBytes(_secretKeyHmac);
             }
+            return "hello_secret";
         }
 
         /// <summary>
