@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Core.Domain.Models;
 using Core.Domain.Services;
 using Core.Application.Messages;
@@ -49,12 +47,7 @@ namespace Infrastructure.Server
         public IList<JobApplicantDto> GetApplicants(Guid jobId)
         {
             var job = _jobRepository.Get(jobId);
-            var applicants = new List<JobApplicant>();
-
-            foreach (JobApplication app in job.Applications)
-            {
-                applicants.Add(app.Applicant);
-            }
+            var applicants = job.Applications.Select(app => app.Applicant).ToList();
 
             return Mapper.Map<IList<JobApplicant>,IList<JobApplicantDto>>(applicants);
         }
@@ -69,9 +62,14 @@ namespace Infrastructure.Server
             return Mapper.Map<IList<JobApplication>, IList<JobApplicationDto>>(appList);
         }
 
-        public void Apply(JobDto job, JobApplicantDto applicant)
+        public JobApplicationDto Apply(JobDto job, JobApplicantDto applicant)
         {
-            throw new NotImplementedException();
+            var mappedJob = Mapper.Map<Job>(job);
+            var mappedApplicant = Mapper.Map<JobApplicant>(applicant);
+
+            var application = _applyForJobsService.SubmitApplication(mappedApplicant, mappedJob);
+
+            return Mapper.Map<JobApplicationDto>(application);
         }
 
         public void Hire(JobDto job, JobApplicantDto applicant)

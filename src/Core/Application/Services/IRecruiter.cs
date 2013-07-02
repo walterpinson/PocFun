@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Core.Application.Messages;
 
 namespace Core.Application.Services
@@ -15,7 +12,7 @@ namespace Core.Application.Services
         IList<JobApplicantDto> GetApplicants(Guid jobId);
         IList<JobApplicationDto> GetApplications(Guid jobId);
 
-        void Apply(JobDto job, JobApplicantDto applicant);
+        JobApplicationDto Apply(JobDto job, JobApplicantDto applicant);
         void Hire(JobDto job, JobApplicantDto applicant);
     }
 }
