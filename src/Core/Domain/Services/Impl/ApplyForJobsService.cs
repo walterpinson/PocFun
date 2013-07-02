@@ -5,7 +5,7 @@ namespace Core.Domain.Services.Impl
 {
     public class ApplyForJobsService : IApplyForJobsService
     {
-        public void SubmitApplication(JobApplicant applicant, IJob job)
+        public IJobApplication SubmitApplication(JobApplicant applicant, IJob job)
         {
             if (null == applicant || null == job)
                 throw new Exception();
@@ -16,7 +16,7 @@ namespace Core.Domain.Services.Impl
                 Date = DateTime.Now
             };
 
-            job.AcceptApplication(application);
+            return (job.AcceptApplication(application)) ? application : null;
         }
     }
 }

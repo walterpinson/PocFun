@@ -4,6 +4,6 @@ namespace Core.Domain.Services
 {
     public interface IApplyForJobsService
     {
-        void SubmitApplication(JobApplicant applicant, IJob job);
+        IJobApplication SubmitApplication(JobApplicant applicant, IJob job);
     }
 }
