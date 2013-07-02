@@ -10,7 +10,7 @@ namespace UnitTest.Core.Domain.Models
         private Job _subjectUnderTest;
 
         [TearDown]
-        private void TearDown()
+        public void TearDown()
         {
             _subjectUnderTest = null;
         }
