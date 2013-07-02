@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Core.Domain.Models;
+﻿using Core.Domain.Models;
 using Core.Domain.Services;
 using Core.Domain.Services.Impl;
 using NUnit.Framework;
@@ -22,7 +17,7 @@ namespace UnitTest.Core.Domain.Services.Impl
             // ARRANGE
             _subjectUnderTest = new ApplyForJobsService();
             var applicant = Substitute.For<JobApplicant>();
-            var job = Substitute.For<Job>();
+            var job = Substitute.For<IJob>();
             job.AcceptApplication(null).ReturnsForAnyArgs(true);
 
             // ACT
