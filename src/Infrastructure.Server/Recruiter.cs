@@ -47,7 +47,7 @@ namespace Infrastructure.Server
         public IList<JobApplicantDto> GetApplicants(Guid jobId)
         {
             var job = _jobRepository.Get(jobId);
-            var applicants = job.Applications.Select(app => app.Applicant).ToList();
+            var applicants = job.GetApplicants();
 
             return Mapper.Map<IList<JobApplicant>,IList<JobApplicantDto>>(applicants);
         }
