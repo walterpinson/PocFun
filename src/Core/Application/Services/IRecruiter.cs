@@ -13,6 +13,6 @@ namespace Core.Application.Services
         IList<JobApplicationDto> GetApplications(Guid jobId);
 
         JobApplicationDto Apply(JobDto job, JobApplicantDto applicant);
-        void Hire(JobDto job, JobApplicantDto applicant);
+        JobDto Hire(JobDto job, JobApplicantDto applicant);
     }
 }

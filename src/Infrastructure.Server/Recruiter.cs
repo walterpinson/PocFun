@@ -62,19 +62,24 @@ namespace Infrastructure.Server
             return Mapper.Map<IList<JobApplication>, IList<JobApplicationDto>>(appList);
         }
 
-        public JobApplicationDto Apply(JobDto job, JobApplicantDto applicant)
+        public JobApplicationDto Apply(JobDto jobDto, JobApplicantDto applicantDto)
         {
-            var mappedJob = Mapper.Map<Job>(job);
-            var mappedApplicant = Mapper.Map<JobApplicant>(applicant);
+            var job = Mapper.Map<Job>(jobDto);
+            var applicant = Mapper.Map<JobApplicant>(applicantDto);
 
-            var application = _applyForJobsService.SubmitApplication(mappedApplicant, mappedJob);
+            var application = _applyForJobsService.SubmitApplication(applicant, job);
 
             return Mapper.Map<JobApplicationDto>(application);
         }
 
-        public void Hire(JobDto job, JobApplicantDto applicant)
+        public JobDto Hire(JobDto jobDto, JobApplicantDto applicantDto)
         {
-            throw new NotImplementedException();
+            var job = Mapper.Map<Job>(jobDto);
+            var applicant = Mapper.Map<JobApplicant>(applicantDto);
+
+            Job filledJob = job.Fill(applicant) ?  _jobRepository.Update(job) : null;
+
+            return Mapper.Map<JobDto>(filledJob);
         }
     }
 }
