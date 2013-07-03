@@ -62,6 +62,24 @@ namespace Infrastructure.Server
             return Mapper.Map<IList<JobApplication>, IList<JobApplicationDto>>(appList);
         }
 
+        public JobDto AddNewJob(JobDto job)
+        {
+            var newJob = Mapper.Map<Job>(job);
+
+            newJob = _jobRepository.Create(newJob);
+
+            return Mapper.Map<JobDto>(newJob);
+        }
+
+        public JobApplicantDto AddNewApplicant(JobApplicantDto jobApplicant)
+        {
+            var newApplicant = Mapper.Map<JobApplicant>(jobApplicant);
+
+            newApplicant = _jobApplicantRepository.Create(newApplicant);
+
+            return Mapper.Map<JobApplicantDto>(newApplicant);
+        }
+
         public JobApplicationDto Apply(JobDto jobDto, JobApplicantDto applicantDto)
         {
             var job = Mapper.Map<Job>(jobDto);

@@ -135,6 +135,48 @@ namespace UnitTest.Infrastructure.Server
         }
 
         [Test]
+        public void CanCreateJob()
+        {
+            // ARRANGE
+            var job2Return = Substitute.For<Job>();
+            var expectedId = job2Return.Id = Guid.NewGuid();
+            _jobRepository.Create(null).ReturnsForAnyArgs(job2Return);
+
+            var job2Add = Substitute.For<JobDto>();
+
+            // ACT
+            var returnedJob = _subjectUnderTest.AddNewJob(job2Add);
+
+            // ASSERT
+            Assert.That(returnedJob, Is.Not.Null);
+            Assert.That(returnedJob.Id,Is.Not.EqualTo(Guid.Empty));
+            Assert.That(returnedJob.Id, Is.EqualTo(expectedId));
+
+            _jobRepository.ReceivedWithAnyArgs(1).Create(null);
+        }
+
+        [Test]
+        public void CanCreateJobApplicant()
+        {
+            // ARRANGE
+            var applicant2Return = Substitute.For<JobApplicant>();
+            var expectedId = applicant2Return.Id = Guid.NewGuid();
+            _jobApplicantRepository.Create(null).ReturnsForAnyArgs(applicant2Return);
+
+            var applicant2Add = Substitute.For<JobApplicantDto>();
+
+            // ACT
+            var returnedApplicant = _subjectUnderTest.AddNewApplicant(applicant2Add);
+
+            // ASSERT
+            Assert.That(returnedApplicant, Is.Not.Null);
+            Assert.That(returnedApplicant.Id, Is.Not.EqualTo(Guid.Empty));
+            Assert.That(returnedApplicant.Id, Is.EqualTo(expectedId));
+
+            _jobApplicantRepository.ReceivedWithAnyArgs(1).Create(null);
+        }
+
+        [Test]
         public void CanApply()
         {
             // ARRANGE
