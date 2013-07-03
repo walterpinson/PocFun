@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Core.Application.Messages;
 using Core.Application.Services;
 using Core.Domain.Models;
 using Core.Domain.Services;
 using Infrastructure.Server;
 using NUnit.Framework;
 using NSubstitute;
+using AutoMapper;
 
 namespace UnitTest.Infrastructure.Server
 {
@@ -136,20 +138,56 @@ namespace UnitTest.Infrastructure.Server
         public void CanApply()
         {
             // ARRANGE
+            var job = Substitute.For<JobDto>();
+            var applicant = Substitute.For<JobApplicantDto>();
+            var jobId = job.Id = Guid.NewGuid();
+            var applicantId = applicant.Id = Guid.NewGuid();
+
+            var application = Substitute.For<JobApplication>();
+            application.ApplicantId = applicantId;
+            application.PositionId = jobId;
+            application.Applicant = Mapper.Map<JobApplicant>(applicant);
+            application.Position = Mapper.Map<Job>(job);
+
+            _applyForJobsService.SubmitApplication(application.Applicant, application.Position).ReturnsForAnyArgs(application);
 
             // ACT
+            var returnedApplication = _subjectUnderTest.Apply(job, applicant);
 
             // ASSERT
+            Assert.That(returnedApplication, Is.Not.Null);
+            Assert.That(returnedApplication.Position.Id, Is.EqualTo(jobId));
+            Assert.That(returnedApplication.Applicant.Id, Is.EqualTo(applicantId));
+            _applyForJobsService.ReceivedWithAnyArgs(1).SubmitApplication(application.Applicant, application.Position);
         }
 
         [Test]
         public void CanHire()
         {
             // ARRANGE
+            var job = Substitute.For<JobDto>();
+            var applicant = Substitute.For<JobApplicantDto>();
+            applicant.Id = Guid.NewGuid();
+
+            var job2Return = Mapper.Map<Job>(job);
+            var applicant2Return = Mapper.Map<JobApplicant>(applicant);
+            job2Return.Fill(applicant2Return);
+            job2Return.PersonHiredId = job2Return.PersonHired.Id;
+
+
+            _jobRepository.Update(job2Return).ReturnsForAnyArgs(job2Return);
 
             // ACT
+            var returnedJob = _subjectUnderTest.Hire(job, applicant);
+
 
             // ASSERT
+            Assert.That(returnedJob, Is.Not.Null);
+            Assert.That(returnedJob.IsFilled, Is.True);
+            Assert.That(returnedJob.PersonHiredId, Is.Not.Null);
+            Assert.That(returnedJob.PersonHiredId, Is.Not.EqualTo(Guid.Empty));
+            Assert.That(returnedJob.PersonHiredId, Is.EqualTo(applicant.Id));
+            _jobRepository.ReceivedWithAnyArgs(1).Update(job2Return);
         }
     }
 }
