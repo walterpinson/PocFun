@@ -51,8 +51,15 @@ namespace Core.Domain.Models
             if (null == personHired)
                 throw new Exception();
 
-            PersonHired = personHired;
-            IsFilled = true;
+            try
+            {
+                PersonHired = personHired;
+                IsFilled = true;
+            }
+            catch(Exception)
+            {
+                IsFilled = false;
+            }
 
             return IsFilled;
         }
