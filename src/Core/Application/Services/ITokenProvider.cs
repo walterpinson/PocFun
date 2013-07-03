@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Core.Application.Services
 {
-    public interface ITokenService
+    public interface ITokenProvider
     {
-        string Generate(string userId, string ipAddress);
-        bool Validate(string token, string userId, string ipAddress);
+        string GenerateToken(string userId, string ipAddress);
+        bool ValidateToken(string token, string userId, string ipAddress);
     }
 }
