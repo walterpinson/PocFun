@@ -5,6 +5,7 @@ using Core.Domain.Models;
 using Core.Domain.Services;
 using Infrastructure.Data.MongoDb.Models;
 using AutoMapper;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoRepository;
 
@@ -47,6 +48,22 @@ namespace Infrastructure.Data.MongoDb
         public Job Update(Job entity)
         {
             var mongoEntity = Mapper.Map<MongoJob>(entity);
+            var applications = Mapper.Map<IList<JobApplication>, IList<MongoJobApplication>> (entity.Applications);
+
+            foreach(MongoJobApplication app in applications)
+            {
+                if (Guid.Empty == app.Id)
+                {
+                    //var oid = new BsonObjectId(new ObjectId());
+                    var id = Guid.NewGuid();
+                    var bsonId = new BsonBinaryData(id);
+                    app.Id = bsonId.AsGuid;
+                }
+            }
+
+            mongoEntity.Applications =
+                Mapper.Map<IList<MongoJobApplication>, IList<JobApplication>>(applications);
+;
             var returned =  base.Update(mongoEntity);
             entity = Mapper.Map<Job>(returned);
             return entity;

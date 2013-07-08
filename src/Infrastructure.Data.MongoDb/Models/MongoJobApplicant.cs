@@ -1,6 +1,4 @@
-﻿using System;
-using MongoRepository;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoRepository;
 using Core.Domain.Models;
 
 namespace Infrastructure.Data.MongoDb.Models

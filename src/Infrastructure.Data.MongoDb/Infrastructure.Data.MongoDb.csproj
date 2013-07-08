@@ -59,6 +59,7 @@
     <Compile Include="JobRepository.cs" />
     <Compile Include="Models\MongoJob.cs" />
     <Compile Include="Models\MongoJobApplicant.cs" />
+    <Compile Include="Models\MongoJobApplication.cs" />
     <Compile Include="MongoMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

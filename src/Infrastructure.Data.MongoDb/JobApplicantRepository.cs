@@ -24,6 +24,7 @@ namespace Infrastructure.Data.MongoDb
 
         public JobApplicantRepository(MongoUrl url) : base(url)
         {
+            MongoMapper.Configure();
         }
 
         public JobApplicant Get(Guid id)
