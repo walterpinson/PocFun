@@ -31,29 +31,29 @@ namespace Core.Domain.Models
             _jobRepository = jobRepository;
         }
 
-        public bool AcceptApplication(JobApplication application)
+        public JobApplication AcceptApplication(JobApplication application)
         {
-            var accepted = true;
-
             if (null == application)
                 throw new Exception();
 
             if (null == Applications)
                 Applications = new List<JobApplication>();
 
+            JobApplication app = null;
+
             try
             {
-                application.Position = this;
+                application.JobId = Id;
                 Applications.Add(application);
-                _jobRepository.Update(this);
+                app = _jobRepository.Update(this).Applications[Applications.Count - 1];
             }
             catch(Exception e)
             {
-                accepted = false;
                 System.Diagnostics.Trace.WriteLine(e);
             }
 
-            return accepted;
+//            return accepted;
+            return app;
         }
 
         public bool Fill(JobApplicant personHired)
@@ -77,9 +77,9 @@ namespace Core.Domain.Models
             return IsFilled;
         }
 
-        public IList<JobApplicant> GetApplicants()
+        public IList<Guid> GetApplicants()
         {
-            return Applications.Select(app => app.Applicant).ToList();
+            return Applications.Select(app => app.JobApplicantId).ToList();
         } 
     }
 }

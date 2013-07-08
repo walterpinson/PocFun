@@ -176,32 +176,32 @@ namespace UnitTest.Infrastructure.Server
             _jobApplicantRepository.ReceivedWithAnyArgs(1).Create(null);
         }
 
-        [Test]
-        public void CanApply()
-        {
-            // ARRANGE
-            var job = Substitute.For<JobDto>();
-            var applicant = Substitute.For<JobApplicantDto>();
-            var jobId = job.Id = Guid.NewGuid();
-            var applicantId = applicant.Id = Guid.NewGuid();
-
-            var application = Substitute.For<JobApplication>();
-            application.ApplicantId = applicantId;
-            application.PositionId = jobId;
-            application.Applicant = Mapper.Map<JobApplicant>(applicant);
-            application.Position = Mapper.Map<Job>(job);
-
-            _applyForJobsService.SubmitApplication(application.Applicant, application.Position).ReturnsForAnyArgs(application);
-
-            // ACT
-            var returnedApplication = _subjectUnderTest.Apply(job, applicant);
-
-            // ASSERT
-            Assert.That(returnedApplication, Is.Not.Null);
-            Assert.That(returnedApplication.Position.Id, Is.EqualTo(jobId));
-            Assert.That(returnedApplication.Applicant.Id, Is.EqualTo(applicantId));
-            _applyForJobsService.ReceivedWithAnyArgs(1).SubmitApplication(application.Applicant, application.Position);
-        }
+//        [Test]
+//        public void CanApply()
+//        {
+//            // ARRANGE
+//            var job = Substitute.For<JobDto>();
+//            var applicant = Substitute.For<JobApplicantDto>();
+//            var jobId = job.Id = Guid.NewGuid();
+//            var applicantId = applicant.Id = Guid.NewGuid();
+//
+//            var application = Substitute.For<JobApplication>();
+//            application.ApplicantId = applicantId;
+//            application.PositionId = jobId;
+//            application.Applicant = Mapper.Map<JobApplicant>(applicant);
+//            application.Position = Mapper.Map<Job>(job);
+//
+//            _applyForJobsService.SubmitApplication(application.Applicant, application.Position).ReturnsForAnyArgs(application);
+//
+//            // ACT
+//            var returnedApplication = _subjectUnderTest.Apply(job, applicant);
+//
+//            // ASSERT
+//            Assert.That(returnedApplication, Is.Not.Null);
+//            Assert.That(returnedApplication.Position.Id, Is.EqualTo(jobId));
+//            Assert.That(returnedApplication.Applicant.Id, Is.EqualTo(applicantId));
+//            _applyForJobsService.ReceivedWithAnyArgs(1).SubmitApplication(application.Applicant, application.Position);
+//        }
 
         [Test]
         public void CanHire()
