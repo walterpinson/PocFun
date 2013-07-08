@@ -9,9 +9,15 @@ namespace Infrastructure.PocFunApi
             //config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
+                name: "JobSpecificJobApplicationsRoute",
+                routeTemplate: "v1/jobs/{jobId}/jobapplications",
+                defaults: new { controller = "JobApplications", jobId = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "JobSpecificJobApplicantsRoute",
                 routeTemplate: "v1/jobs/{jobId}/jobapplicants",
-                defaults: new {controller = "JobApplicants", jobId = RouteParameter.Optional}
+                defaults: new { controller = "JobApplicants", jobId = RouteParameter.Optional }
             );
 
             config.Routes.MapHttpRoute(
