@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
 
 namespace Infrastructure.PocFunApi
 {
@@ -10,6 +7,12 @@ namespace Infrastructure.PocFunApi
         public static void Register(HttpConfiguration config)
         {
             //config.MapHttpAttributeRoutes();
+
+            config.Routes.MapHttpRoute(
+                name: "JobSpecificJobApplicantsRoute",
+                routeTemplate: "v1/jobs/{jobId}/jobapplicants",
+                defaults: new {controller = "JobApplicants", jobId = RouteParameter.Optional}
+            );
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
