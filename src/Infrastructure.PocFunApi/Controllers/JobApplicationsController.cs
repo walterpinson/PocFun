@@ -17,31 +17,36 @@ namespace Infrastructure.PocFunApi.Controllers
             _recruiter = mongoRecruiter;
         }
 
-        // GET api/jobapplication
+        // GET api/jobapplications
+        [HttpGet]
         public IList<JobApplication> Get()
         {
             return null;
         }
 
-        // GET api/jobapplication/5
+        // GET api/jobapplications/0000-...
+        [HttpGet]
         public IList<JobApplicationDto> Get(Guid jobId)
         {
             return _recruiter.GetApplications(jobId);
         }
 
-        // POST api/jobapplication
-        public JobApplicationDto Post(JobDto job, JobApplicantDto applicant)
+        // POST api/jobapplications
+        [HttpPost]
+        public JobApplicationDto Post(ApplicationRequest application)
         {
-            return _recruiter.Apply(job, applicant);
+            return _recruiter.Apply(application.JobId, application.ApplicantId);
         }
 
-        // PUT api/jobapplication/5
+
+        // PUT api/jobapplications/5
+        [HttpPut]
         public JobApplicationDto Put(Guid id, JobApplicationDto jobApplication)
         {
             return null;
         }
 
-        // DELETE api/jobapplication/5
+        // DELETE api/jobapplications/5
         public void Delete(Guid id)
         {
         }

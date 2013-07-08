@@ -84,16 +84,29 @@ namespace Infrastructure.Server
         {
             var job = Mapper.Map<Job>(jobDto);
             var applicant = Mapper.Map<JobApplicant>(applicantDto);
+            job.Initialize(_jobRepository);
 
             var application = _applyForJobsService.SubmitApplication(applicant, job);
 
             return Mapper.Map<JobApplicationDto>(application);
         }
 
+        public JobApplicationDto Apply(Guid jobId, Guid jobApplicantId)
+        {
+            var job = _jobRepository.Get(jobId);
+            var applicant = _jobApplicantRepository.Get(jobApplicantId);
+            job.Initialize(_jobRepository);
+
+            var application = _applyForJobsService.SubmitApplication(applicant, job);
+
+            return Mapper.Map<JobApplicationDto>(application);
+        }        
+
         public JobDto Hire(JobDto jobDto, JobApplicantDto applicantDto)
         {
             var job = Mapper.Map<Job>(jobDto);
             var applicant = Mapper.Map<JobApplicant>(applicantDto);
+            job.Initialize(_jobRepository);
 
             Job filledJob = job.Fill(applicant) ?  _jobRepository.Update(job) : null;
 

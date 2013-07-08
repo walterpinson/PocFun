@@ -16,6 +16,7 @@ namespace Core.Application.Services
         JobApplicantDto AddNewApplicant(JobApplicantDto jobApplicant);
 
         JobApplicationDto Apply(JobDto job, JobApplicantDto applicant);
+        JobApplicationDto Apply(Guid jobId, Guid applicantId);
         JobDto Hire(JobDto job, JobApplicantDto applicant);
     }
 }
