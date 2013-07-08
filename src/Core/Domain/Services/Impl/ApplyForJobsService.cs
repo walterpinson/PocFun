@@ -14,11 +14,12 @@ namespace Core.Domain.Services.Impl
 
             var application = new JobApplication
             {
-                Applicant = applicant,
+                JobApplicantId = applicant.Id,
                 Date = DateTime.Now
             };
 
-            return (job.AcceptApplication(application)) ? application : null;
+//            return (job.AcceptApplication(application)) ? application : null;
+            return job.AcceptApplication(application);
         }
     }
 }

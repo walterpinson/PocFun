@@ -11,6 +11,7 @@ namespace UnitTest.Core.Domain.Services.Impl
     {
         private IApplyForJobsService _subjectUnderTest;
 
+/*
         [Test]
         public void CanSubmitJobApplication()
         {
@@ -26,5 +27,6 @@ namespace UnitTest.Core.Domain.Services.Impl
             // ASSERT
             job.ReceivedWithAnyArgs(1).AcceptApplication(null);
         }
+*/
     }
 }

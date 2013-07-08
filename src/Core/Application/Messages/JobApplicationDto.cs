@@ -6,7 +6,7 @@ namespace Core.Application.Messages
     {
         public Guid Id { get; set; }
         public DateTime Date { get; set; }
-        public virtual JobApplicantDto Applicant { get; set; }
-        public virtual JobDto Position { get; set; }
+        public Guid JobId { get; set; }
+        public Guid JobApplicantId { get; set; }
     }
 }
