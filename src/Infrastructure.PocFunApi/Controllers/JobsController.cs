@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Web.Http;
 using Core.Application.Messages;
 using Core.Application.Services;
-using Infrastructure.PocFunApi.App_Start;
 using Microsoft.Practices.Unity;
 
 namespace Infrastructure.PocFunApi.Controllers
@@ -27,12 +26,6 @@ namespace Infrastructure.PocFunApi.Controllers
             _recruiter = mongoRecruiter;
         }
 
-/*
-        public JobsController()
-        {
-            _recruiter = UnityConfig.GetConfiguredContainer().Resolve<IRecruiter>("mongo");
-        }
-*/
         // GET v1/jobs
         // for some reason I cannot get attribute routing to work.  It's like I have the
         // wrong version of WebAPI installed, or something  :-/
@@ -42,7 +35,7 @@ namespace Infrastructure.PocFunApi.Controllers
             return _recruiter.GetJobs();
         }
 
-        // GET v1/jobs/{0000-...}
+        // GET v1/jobs/0000-...
         public JobDto Get(Guid id)
         {
             return _recruiter.GetJob(id);
@@ -54,13 +47,13 @@ namespace Infrastructure.PocFunApi.Controllers
             return _recruiter.AddNewJob(job);
         }
 
-        // PUT v1/jobs/{0000-...}
-        public JobDto Put(int id, [FromBody]string value)
+        // PUT v1/jobs/0000-...
+        public JobDto Put(int id, JobDto job)
         {
             return null;
         }
 
-        // DELETE v1/jobs/{0000-...}
+        // DELETE v1/jobs/0000-...
         public void Delete(int id)
         {
         }
