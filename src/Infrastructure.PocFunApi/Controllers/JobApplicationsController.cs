@@ -39,6 +39,7 @@ namespace Infrastructure.PocFunApi.Controllers
         }
 
 
+
         // PUT api/jobapplications/5
         [HttpPut]
         public JobApplicationDto Put(Guid id, JobApplicationDto jobApplication)
