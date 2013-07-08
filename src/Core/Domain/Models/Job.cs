@@ -15,7 +15,7 @@ namespace Core.Domain.Models
         public virtual JobApplicant PersonHired { get; set; }
         public virtual IList<JobApplication> Applications { get; set; }
 
-        private readonly IJobRepository _jobRepository;
+        private IJobRepository _jobRepository;
 
         public Job():this(null) {}
 
@@ -23,6 +23,11 @@ namespace Core.Domain.Models
         {
             // TODO: intentionally not settig the Id here.  Will let the database handle that.  ...for now.
             IsFilled = false;
+            _jobRepository = jobRepository;
+        }
+
+        public void Initialize(IJobRepository jobRepository)
+        {
             _jobRepository = jobRepository;
         }
 
@@ -42,9 +47,10 @@ namespace Core.Domain.Models
                 Applications.Add(application);
                 _jobRepository.Update(this);
             }
-            catch(Exception)
+            catch(Exception e)
             {
                 accepted = false;
+                System.Diagnostics.Trace.WriteLine(e);
             }
 
             return accepted;
