@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Core.Domain.Services;
 
 namespace Core.Domain.Models
 {
@@ -14,10 +15,15 @@ namespace Core.Domain.Models
         public virtual JobApplicant PersonHired { get; set; }
         public virtual IList<JobApplication> Applications { get; set; }
 
-        public Job()
+        private readonly IJobRepository _jobRepository;
+
+        public Job():this(null) {}
+
+        public Job(IJobRepository jobRepository)
         {
             // TODO: intentionally not settig the Id here.  Will let the database handle that.  ...for now.
             IsFilled = false;
+            _jobRepository = jobRepository;
         }
 
         public bool AcceptApplication(JobApplication application)
@@ -34,6 +40,7 @@ namespace Core.Domain.Models
             {
                 application.Position = this;
                 Applications.Add(application);
+                _jobRepository.Update(this);
             }
             catch(Exception)
             {
