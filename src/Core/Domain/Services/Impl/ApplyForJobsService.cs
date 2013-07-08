@@ -5,6 +5,8 @@ namespace Core.Domain.Services.Impl
 {
     public class ApplyForJobsService : IApplyForJobsService
     {
+        public ApplyForJobsService(){}
+
         public IJobApplication SubmitApplication(JobApplicant applicant, IJob job)
         {
             if (null == applicant || null == job)

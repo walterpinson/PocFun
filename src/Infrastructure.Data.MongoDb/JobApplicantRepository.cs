@@ -18,6 +18,10 @@ namespace Infrastructure.Data.MongoDb
          * we will map between our Core.Models and MangoDb.Models.
          */
 
+        public JobApplicantRepository(string connectionString) : this(new MongoUrl(connectionString))
+        {
+        }
+
         public JobApplicantRepository(MongoUrl url) : base(url)
         {
         }

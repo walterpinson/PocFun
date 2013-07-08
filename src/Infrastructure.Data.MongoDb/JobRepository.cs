@@ -12,8 +12,10 @@ namespace Infrastructure.Data.MongoDb
 {
     public class JobRepository : MongoRepository<MongoJob>, IJobRepository
     {
+        public JobRepository(string connectionString) :this(new MongoUrl(connectionString)){}
         public JobRepository(MongoUrl url) : base(url)
         {
+            MongoMapper.Configure();
         }
 
         public Job Get(Guid id)
