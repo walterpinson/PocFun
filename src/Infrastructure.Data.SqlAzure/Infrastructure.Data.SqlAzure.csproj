@@ -66,6 +66,10 @@
     <Compile Include="Migrations\201307091748317_Iteration3.Designer.cs">
       <DependentUpon>201307091748317_Iteration3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201307091838018_Iteration4.cs" />
+    <Compile Include="Migrations\201307091838018_Iteration4.Designer.cs">
+      <DependentUpon>201307091838018_Iteration4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OperationStatus.cs" />
     <Compile Include="PocFunDbContext.cs" />
@@ -96,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201307091748317_Iteration3.resx">
       <DependentUpon>201307091748317_Iteration3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307091838018_Iteration4.resx">
+      <DependentUpon>201307091838018_Iteration4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

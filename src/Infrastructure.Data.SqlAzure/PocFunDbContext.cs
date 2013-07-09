@@ -11,6 +11,7 @@ namespace Infrastructure.Data.SqlAzure
 
         public DbSet<Job> Jobs { get; set; }
         public DbSet<JobApplicant> JobApplicants { get; set; }
+        public DbSet<JobApplication> JobApplications { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
