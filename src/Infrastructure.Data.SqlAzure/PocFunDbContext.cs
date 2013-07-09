@@ -7,7 +7,7 @@ namespace Infrastructure.Data.SqlAzure
     public class PocFunDbContext : DbContext
     {
         public PocFunDbContext()
-            : base(string.Format("name={0}", "DefaultConnectionString")) { }
+            : base(string.Format("name={0}", "DefaultConnection")) { }
 
         public DbSet<Job> Jobs { get; set; }
         public DbSet<JobApplicant> JobApplicants { get; set; }
