@@ -13,6 +13,13 @@ namespace Infrastructure.Server
 
         public string GenerateToken(string userId, string ipAddress)
         {
+            _secretKeyHmac = new byte[64];
+            using(var rng = new RNGCryptoServiceProvider())
+            {
+                // Fill the array with cryptographically strong random bytes
+                rng.GetBytes(_secretKeyHmac);
+            }
+
             return "hello.token";
         }
 
