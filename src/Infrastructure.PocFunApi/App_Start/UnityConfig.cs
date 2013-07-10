@@ -75,7 +75,7 @@ namespace Infrastructure.PocFunApi.App_Start
                     new ResolvedParameter<IJobRepository>(sqlJobRepo),
                     new ResolvedParameter<IJobApplicantRepository>(sqlJobApplicantRepo)));
 
-            container.RegisterType<ITokenProvider, TokenProvider>();
+            container.RegisterType<ITokenService, TokenProvider>();
 
         }
     }

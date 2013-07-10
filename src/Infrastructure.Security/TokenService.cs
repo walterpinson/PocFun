@@ -4,7 +4,7 @@ using Core.Application.Services;
 
 namespace Infrastructure.Security
 {
-    public class TokenProvider : ITokenProvider
+    public class TokenService : ITokenService
     {
         private byte[] _secretKeyHmac;
         private byte[] _secretKeyEncryption;
