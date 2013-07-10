@@ -10,10 +10,13 @@ using Infrastructure.Server;
 
 namespace Infrastructure.PocFunApi.App_Start
 {
+    using Infrastructure.Security;
+
     /// <summary>
     /// Specifies the Unity configuration for the main container.
     /// </summary>
     public class UnityConfig
+
     {
         #region Unity Container
         private static Lazy<IUnityContainer> container = new Lazy<IUnityContainer>(() =>
@@ -75,7 +78,7 @@ namespace Infrastructure.PocFunApi.App_Start
                     new ResolvedParameter<IJobRepository>(sqlJobRepo),
                     new ResolvedParameter<IJobApplicantRepository>(sqlJobApplicantRepo)));
 
-            container.RegisterType<ITokenService, TokenProvider>();
+            container.RegisterType<ITokenService, TokenService>();
 
         }
     }

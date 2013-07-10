@@ -324,6 +324,10 @@
       <Project>{7685d9a5-d53a-40fd-8eb3-d325c95f6331}</Project>
       <Name>Infrastructure.Data.SqlAzure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.Security\Infrastructure.Security.csproj">
+      <Project>{f565bc60-c80b-46e5-bf3a-b81a6bb1474d}</Project>
+      <Name>Infrastructure.Security</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Infrastructure.Server\Infrastructure.Server.csproj">
       <Project>{ab42464c-0d88-4959-b1dd-c2c7052bc73f}</Project>
       <Name>Infrastructure.Server</Name>
