@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using Core.Application.Services;
 
-namespace Infrastructure.Server
+namespace Infrastructure.Security
 {
     public class TokenProvider : ITokenProvider
     {
@@ -20,7 +20,9 @@ namespace Infrastructure.Server
                 rng.GetBytes(_secretKeyHmac);
             }
 
-            return "hello.token";
+            var token = new Token();
+
+            return token.Tokenize();
         }
 
         public bool ValidateToken(string token, string userId, string ipAddress)
