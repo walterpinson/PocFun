@@ -1,12 +1,22 @@
 ﻿namespace Infrastructure.Security
 {
+    using System;
+
     public class Token
     {
         public string UserId { get; private set; }
         public string IpAddress { get; private set; }
 
+        public DateTime TimeStamp { get; private set; }
+
         private bool _isTokenized = false;
         private string _secretKey = null;
+
+        public Token(string userId, string ipAddress)
+        {
+            UserId = userId;
+            IpAddress = ipAddress;
+        }
 
         public override string ToString()
         {

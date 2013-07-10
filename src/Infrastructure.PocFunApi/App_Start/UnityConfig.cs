@@ -4,8 +4,7 @@ using Core.Application.Services;
 using Core.Domain.Services;
 using Core.Domain.Services.Impl;
 using Microsoft.Practices.Unity;
-using Microsoft.Practices.Unity.Configuration;
-using Infrastructure.Data;
+
 using Infrastructure.Server;
 
 namespace Infrastructure.PocFunApi.App_Start
@@ -55,7 +54,7 @@ namespace Infrastructure.PocFunApi.App_Start
             const string sqlJobApplicantRepo = "sqlJobApplicantRepository";
 
             // TODO: Register your types here
-            // container.RegisterType<IProductRepository, ProductRepository>();
+            container.RegisterType<ITokenService, TokenService>();
             container.RegisterType<IApplyForJobsService, ApplyForJobsService>();
             container.RegisterType<IJobRepository, Data.MongoDb.JobRepository>(mongoJobRepo,
                 new InjectionConstructor(_mongoUrl));
@@ -77,9 +76,6 @@ namespace Infrastructure.PocFunApi.App_Start
                     typeof(IApplyForJobsService),
                     new ResolvedParameter<IJobRepository>(sqlJobRepo),
                     new ResolvedParameter<IJobApplicantRepository>(sqlJobApplicantRepo)));
-
-            container.RegisterType<ITokenService, TokenService>();
-
         }
     }
 }

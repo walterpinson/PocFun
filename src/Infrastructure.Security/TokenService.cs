@@ -20,7 +20,7 @@ namespace Infrastructure.Security
                 rng.GetBytes(_secretKeyHmac);
             }
 
-            var token = new Token();
+            var token = new Token("user","127.0.0.1");
 
             return token.Tokenize();
         }
