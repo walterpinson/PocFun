@@ -19,6 +19,7 @@ namespace Infrastructure.PocFunApi
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            FormatterConfig.RegisterGlobalFormatters(GlobalConfiguration.Configuration.Formatters);
 
             DtoMapper.Configure();
         }
