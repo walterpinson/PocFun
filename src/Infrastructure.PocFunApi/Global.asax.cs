@@ -1,4 +1,6 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -21,6 +23,11 @@ namespace Infrastructure.PocFunApi
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             DtoMapper.Configure();
+        }
+
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {
+            HttpContext.Current.Response.AppendHeader("Access-Control-Allow-Origin", "*");
         }
     }
 }
