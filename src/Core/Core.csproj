@@ -34,7 +34,6 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\Messages\ApplicationRequest.cs" />
     <Compile Include="Application\Messages\JobApplicantDto.cs" />
     <Compile Include="Application\Messages\JobApplicationDto.cs" />
     <Compile Include="Application\Messages\JobDto.cs" />
