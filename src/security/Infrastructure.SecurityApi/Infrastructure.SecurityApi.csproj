@@ -7,15 +7,15 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0C829D42-F6D5-4489-B3BC-ADF33616D72C}</ProjectGuid>
+    <ProjectGuid>{C7937C7E-EBC5-440F-BC44-35AC0F976131}</ProjectGuid>
     <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Infrastructure.PocFunApi</RootNamespace>
-    <AssemblyName>Infrastructure.PocFunApi</AssemblyName>
+    <RootNamespace>Infrastructure.SecurityApi</RootNamespace>
+    <AssemblyName>Infrastructure.SecurityApi</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -51,10 +51,6 @@
     </Reference>
     <Reference Include="Microsoft.Practices.Unity.WebApi">
       <HintPath>..\packages\Unity.AspNet.WebApi.3.0.1304.0\lib\Net45\Microsoft.Practices.Unity.WebApi.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoRepository, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\MongoRepository.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -182,14 +178,14 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\JobApplicantsController.cs" />
-    <Compile Include="Controllers\JobApplicationsController.cs" />
-    <Compile Include="Controllers\JobsController.cs" />
+    <Compile Include="Controllers\TokenRequestController.cs" />
+    <Compile Include="Controllers\TokenValidationController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ApplicationRequest.cs" />
+    <Compile Include="Models\TokenRequest.cs" />
+    <Compile Include="Models\TokenValidationRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -313,19 +309,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
-      <Project>{6658A7B9-43B4-4760-91F0-491ED010E108}</Project>
+      <Project>{E95D09FE-229C-49E3-9844-512FDE7F30B9}</Project>
       <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Infrastructure.Data.MongoDb\Infrastructure.Data.MongoDb.csproj">
-      <Project>{ada1c196-b9d2-40a8-99d0-986463655d48}</Project>
-      <Name>Infrastructure.Data.MongoDb</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Infrastructure.Data.SqlAzure\Infrastructure.Data.SqlAzure.csproj">
-      <Project>{7685d9a5-d53a-40fd-8eb3-d325c95f6331}</Project>
-      <Name>Infrastructure.Data.SqlAzure</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Infrastructure.Server\Infrastructure.Server.csproj">
-      <Project>{ab42464c-0d88-4959-b1dd-c2c7052bc73f}</Project>
+      <Project>{6955DAD5-A728-4E21-A652-9DD877EF36A1}</Project>
       <Name>Infrastructure.Server</Name>
     </ProjectReference>
   </ItemGroup>
@@ -345,9 +333,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>33413</DevelopmentServerPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://api.pocfun.wp.dev</IISUrl>
+          <IISUrl>http://localhost:24199/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

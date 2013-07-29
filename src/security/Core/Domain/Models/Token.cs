@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.Security
+﻿namespace Core.Domain.Models
 {
     public class Token
     {

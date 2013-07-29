@@ -26,8 +26,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest.Core", "UnitTest.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.PocFunApi", "Infrastructure.PocFunApi\Infrastructure.PocFunApi.csproj", "{0C829D42-F6D5-4489-B3BC-ADF33616D72C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Security", "Infrastructure.Security\Infrastructure.Security.csproj", "{F565BC60-C80B-46E5-BF3A-B81A6BB1474D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,10 +68,6 @@ Global
 		{0C829D42-F6D5-4489-B3BC-ADF33616D72C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C829D42-F6D5-4489-B3BC-ADF33616D72C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C829D42-F6D5-4489-B3BC-ADF33616D72C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F565BC60-C80B-46E5-BF3A-B81A6BB1474D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F565BC60-C80B-46E5-BF3A-B81A6BB1474D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F565BC60-C80B-46E5-BF3A-B81A6BB1474D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F565BC60-C80B-46E5-BF3A-B81A6BB1474D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,7 +3,6 @@ using System.Configuration;
 using Core.Application.Services;
 using Core.Domain.Services;
 using Core.Domain.Services.Impl;
-using Infrastructure.Security;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using Infrastructure.Data;
@@ -75,9 +74,6 @@ namespace Infrastructure.PocFunApi.App_Start
                     typeof(IApplyForJobsService),
                     new ResolvedParameter<IJobRepository>(sqlJobRepo),
                     new ResolvedParameter<IJobApplicantRepository>(sqlJobApplicantRepo)));
-
-            container.RegisterType<ITokenService, TokenService>();
-
         }
     }
 }

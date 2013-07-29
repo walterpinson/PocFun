@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Security.Cryptography;
 using Core.Application.Services;
+using Core.Domain.Models;
 
-namespace Infrastructure.Security
+namespace Infrastructure.Server
 {
     public class TokenService : ITokenService
     {
