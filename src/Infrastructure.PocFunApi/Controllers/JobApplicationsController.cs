@@ -4,6 +4,7 @@ using System.Web.Http;
 using Core.Application.Messages;
 using Core.Application.Services;
 using Core.Domain.Models;
+using Infrastructure.PocFunApi.Models;
 using Microsoft.Practices.Unity;
 
 namespace Infrastructure.PocFunApi.Controllers
