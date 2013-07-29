@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 using Core.Application.Services;
-using Infrastructure.PocFunApi.Models;
+using Infrastructure.SecurityApi.Models;
 
-namespace Infrastructure.PocFunApi.Controllers
+namespace Infrastructure.SecurityApi.Controllers
 {
     public class TokenRequestController : ApiController
     {

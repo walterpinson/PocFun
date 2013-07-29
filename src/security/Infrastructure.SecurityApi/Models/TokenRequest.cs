@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Infrastructure.PocFunApi.Models
+namespace Infrastructure.SecurityApi.Models
 {
     public class TokenRequest
     {
