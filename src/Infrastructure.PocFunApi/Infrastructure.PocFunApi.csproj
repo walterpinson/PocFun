@@ -185,10 +185,15 @@
     <Compile Include="Controllers\JobApplicantsController.cs" />
     <Compile Include="Controllers\JobApplicationsController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
+    <Compile Include="Controllers\TokenRequestController.cs" />
+    <Compile Include="Controllers\TokenValidationController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ApplicationRequest.cs" />
+    <Compile Include="Models\TokenRequest.cs" />
+    <Compile Include="Models\TokenValidationRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -306,7 +311,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -323,6 +327,10 @@
     <ProjectReference Include="..\Infrastructure.Data.SqlAzure\Infrastructure.Data.SqlAzure.csproj">
       <Project>{7685d9a5-d53a-40fd-8eb3-d325c95f6331}</Project>
       <Name>Infrastructure.Data.SqlAzure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.Security\Infrastructure.Security.csproj">
+      <Project>{F565BC60-C80B-46E5-BF3A-B81A6BB1474D}</Project>
+      <Name>Infrastructure.Security</Name>
     </ProjectReference>
     <ProjectReference Include="..\Infrastructure.Server\Infrastructure.Server.csproj">
       <Project>{ab42464c-0d88-4959-b1dd-c2c7052bc73f}</Project>
