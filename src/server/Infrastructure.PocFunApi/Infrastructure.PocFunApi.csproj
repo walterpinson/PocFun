@@ -54,7 +54,7 @@
     </Reference>
     <Reference Include="MongoRepository, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\MongoRepository.dll</HintPath>
+      <HintPath>..\..\..\lib\MongoRepository.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -188,12 +188,13 @@
     <Compile Include="Controllers\JobApplicationsController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="Formatters\XmlMediaTypeFormatter.cs" />
     <Compile Include="Formatters\JsonMediaTypeFormatter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ApiMessage.cs" />
     <Compile Include="Models\Error.cs" />
+    <Compile Include="Models\IApiMessage.cs" />
     <Compile Include="Models\IError.cs" />
     <Compile Include="Models\IMetadata.cs" />
     <Compile Include="Models\IMessage.cs" />

@@ -13,18 +13,7 @@ namespace Infrastructure.PocFunApi
         /// <param name="formatters">The formatters.</param>
         public static void RegisterGlobalFormatters(MediaTypeFormatterCollection formatters)
         {
-            RegisterXmlFormatter(formatters);
             RegisterJsonFormatter(formatters);
-        }
-
-        /// <summary>
-        /// Registers the XML formatters.
-        /// </summary>
-        /// <param name="formatters">The formatters.</param>
-        private static void RegisterXmlFormatter(MediaTypeFormatterCollection formatters)
-        {
-            formatters.Remove(formatters.XmlFormatter);
-            formatters.Add(new Formatters.XmlMediaTypeFormatter() { UseXmlSerializer = true });
         }
 
         /// <summary>

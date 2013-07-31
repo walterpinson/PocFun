@@ -15,13 +15,16 @@ namespace Infrastructure.PocFunApi.Models
         {
             get
             {
-                if (!_metadata.Any())
+                if (!_metadata.Any() || _metadata.Count() > 1)
                 {
+                    // Create new collection instance ... for now, likely only one instance in collection ever returned
+                    _metadata = new List<Metadata<T>>();
+
                     var metadataItem = new Metadata<T>
-                        {
-                            DateTimeFormat = "yyyy-mm-dd hh:mm+/-hh:mm",
-                            MsgFormatVer = "v1",
-                        };
+                    {
+                        DateTimeFormat = "yyyy-mm-dd hh:mm+/-hh:mm",
+                        MsgFormatVer = "v1",
+                    };
 
                     _metadata.Add(metadataItem);
                 }

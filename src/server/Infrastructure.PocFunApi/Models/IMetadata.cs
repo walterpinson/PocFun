@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace Infrastructure.PocFunApi.Models
+﻿namespace Infrastructure.PocFunApi.Models
 {
     public interface IMetadata
     {

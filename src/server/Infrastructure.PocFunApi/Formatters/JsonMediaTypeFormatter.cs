@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json.Serialization;
-
-namespace Infrastructure.PocFunApi.Formatters
+﻿namespace Infrastructure.PocFunApi.Formatters
 {
     using System;
     using System.IO;
