@@ -10,7 +10,7 @@ namespace Infrastructure.Server
         private static byte[] _secretKeyHmac;
         private byte[] _secretKeyEncryption;
 
-        #region Implementation of ITokenProvider
+        #region Implementation of ITokenService
 
         public string GenerateToken(string userId, string ipAddress, DateTime issueDate)
         {
