@@ -1,12 +1,23 @@
-﻿namespace Core.Domain.Models
+﻿using System;
+
+namespace Core.Domain.Models
 {
     public class Token
     {
         public string UserId { get; private set; }
         public string IpAddress { get; private set; }
+        public DateTime IssueDate { get; private set; }
+        public string Hmac { get; private set; }
 
         private bool _isTokenized = false;
         private string _secretKey = null;
+
+        public Token(string userId, string ipAddress, DateTime issueDate)
+        {
+            UserId = userId;
+            IpAddress = ipAddress;
+            IssueDate = issueDate;
+        }
 
         public override string ToString()
         {
