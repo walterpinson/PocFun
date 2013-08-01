@@ -26,7 +26,7 @@ namespace Infrastructure.Server
             return token.Tokenize();
         }
 
-        public bool ValidateToken(string token, string userId, string ipAddress, DateTime issueDate)
+        public bool ValidateToken(string token, string ipAddress)
         {
             // Algorithm
             // 1. Reconstruct the submitted Token object from the token string
