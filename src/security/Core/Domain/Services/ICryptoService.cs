@@ -4,8 +4,7 @@ namespace Core.Domain.Services
 {
     public interface ICryptoService
     {
-        IBuffer CreateHmac();
-
-        bool VerifyHmac();
+        byte[] Encrypt(byte[] buffer);
+        byte[] Decrypt(byte[] cipher);
     }
 }
