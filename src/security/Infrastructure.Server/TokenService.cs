@@ -14,13 +14,27 @@ namespace Infrastructure.Server
 
         public string GenerateToken(string userId, string ipAddress, DateTime issueDate)
         {
-            var token = new Token();
+            // Algorithm
+            // 1. Validate the input
+            // 2. Create a token with the input
+            // 3. Calculate the HMAC
+            // 4. JSON-serialize the token object
+            // 5. Encrypt the serialized token string
+            // 6. Base64-encode this string
+            var token = new Token(userId, ipAddress, issueDate);
 
             return token.Tokenize();
         }
 
         public bool ValidateToken(string token, string userId, string ipAddress, DateTime issueDate)
         {
+            // Algorithm
+            // 1. Reconstruct the submitted Token object from the token string
+            //    1.1 Base64-decode the token string
+            //    1.2 Decrypt the token string
+            //    1.3 JSON-deserialize the token object
+            //    1.4 Check if the token is valid
+            // 2. Generate a token based on the input
             return true;
         }
 
