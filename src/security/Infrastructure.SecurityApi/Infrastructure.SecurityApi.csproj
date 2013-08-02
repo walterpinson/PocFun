@@ -312,6 +312,10 @@
       <Project>{E95D09FE-229C-49E3-9844-512FDE7F30B9}</Project>
       <Name>Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.Cryptography\Infrastructure.Cryptography.csproj">
+      <Project>{1DF4A5F9-7D37-49A0-9AA3-C8D40FA858D3}</Project>
+      <Name>Infrastructure.Cryptography</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Infrastructure.Server\Infrastructure.Server.csproj">
       <Project>{6955DAD5-A728-4E21-A652-9DD877EF36A1}</Project>
       <Name>Infrastructure.Server</Name>
