@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Globalization;
+using Core.Domain.Services;
 
 namespace Core.Domain.Models
 {
-    using Core.Domain.Services;
 
     public class Token
     {
@@ -50,7 +51,7 @@ namespace Core.Domain.Models
 
         private string GenerateHmac()
         {
-            var message = string.Format("{0}:{1}:{2}", UserId, IpAddress, IssueDate.ToUniversalTime().ToString());
+            var message = string.Format("{0}:{1}:{2}", UserId, IpAddress, IssueDate.ToUniversalTime().ToString(CultureInfo.InvariantCulture));
             return _messageAuthenticationService.CreateHmac(message);
         }
     }
