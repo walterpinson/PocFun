@@ -36,7 +36,7 @@ namespace Core.Domain.Models
             return Hmac;
         }
 
-        public bool IsValid(IMessageAuthenticationService messageAuthenticationService, string token, string ipAddress)
+        public bool IsValid(IMessageAuthenticationService messageAuthenticationService, string ipAddress)
         {
             if (string.Equals(ipAddress, IpAddress))
             {
