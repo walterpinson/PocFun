@@ -46,6 +46,8 @@ namespace Infrastructure.SecurityApi.App_Start
             container.RegisterType<ITokenService, TokenService>();
             container.RegisterType<IMessageAuthenticationService, MessageAuthenticationService>(
                 new ContainerControlledLifetimeManager()); // This should be a singleton.  If the container goes out of scope, though...
+            container.RegisterType<ICryptoService, CryptoService>(
+                new ContainerControlledLifetimeManager()); // This should be a singleton.  If the container goes out of scope, though...
         }
     }
 }
