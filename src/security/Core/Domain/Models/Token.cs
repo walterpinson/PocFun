@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Globalization;
+using Core.Domain.Services;
 
 namespace Core.Domain.Models
 {
+
     public class Token
     {
         public string UserId { get; private set; }
@@ -9,8 +12,7 @@ namespace Core.Domain.Models
         public DateTime IssueDate { get; private set; }
         public string Hmac { get; private set; }
 
-        private bool _isTokenized = false;
-        private string _secretKey = null;
+        private IMessageAuthenticationService _messageAuthenticationService;
 
         public Token(string userId, string ipAddress, DateTime issueDate)
         {
@@ -21,26 +23,36 @@ namespace Core.Domain.Models
 
         public override string ToString()
         {
-            if (!_isTokenized)
-                Tokenize();
 
             return "hello.crtyptic.world";
             //return base.ToString();
         }
 
-        public string Tokenize(string secret)
+        public string Tokenize(IMessageAuthenticationService messageAuthenticationService)
         {
-            return "hello.world";
+            _messageAuthenticationService = messageAuthenticationService;
+            Hmac = GenerateHmac();
+
+            return Hmac;
         }
 
-        public string Tokenize()
+        public bool IsValid(IMessageAuthenticationService messageAuthenticationService, string ipAddress)
         {
-            return "hello.world";
+            if (string.Equals(ipAddress, IpAddress))
+            {
+                _messageAuthenticationService = messageAuthenticationService;
+
+                var validHmac = GenerateHmac();
+                if (string.Equals(Hmac, validHmac)) return true;
+            }
+
+            return false;
         }
 
-        public bool IsValid(string token)
+        private string GenerateHmac()
         {
-            return true;
+            var message = string.Format("{0}:{1}:{2}", UserId, IpAddress, IssueDate.ToUniversalTime().ToString(CultureInfo.InvariantCulture));
+            return _messageAuthenticationService.CreateHmac(message);
         }
     }
 }

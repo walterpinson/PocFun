@@ -8,6 +8,6 @@ namespace Core.Domain.Services
 {
     public interface IMessageAuthenticationService
     {
-        byte[] CreateHmac(string message);
+        string CreateHmac(string message);
     }
 }

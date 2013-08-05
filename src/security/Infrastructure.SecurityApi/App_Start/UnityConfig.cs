@@ -6,6 +6,10 @@ using Microsoft.Practices.Unity.Configuration;
 
 namespace Infrastructure.SecurityApi.App_Start
 {
+    using Core.Domain.Services;
+
+    using Infrastructure.Cryptography;
+
     /// <summary>
     /// Specifies the Unity configuration for the main container.
     /// </summary>
@@ -40,6 +44,10 @@ namespace Infrastructure.SecurityApi.App_Start
             // TODO: Register your types here
             // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<ITokenService, TokenService>();
+            container.RegisterType<IMessageAuthenticationService, MessageAuthenticationService>(
+                new ContainerControlledLifetimeManager()); // This should be a singleton.  If the container goes out of scope, though...
+            container.RegisterType<ICryptoService, CryptoService>(
+                new ContainerControlledLifetimeManager()); // This should be a singleton.  If the container goes out of scope, though...
         }
     }
 }
