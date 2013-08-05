@@ -21,13 +21,6 @@ namespace Core.Domain.Models
             IssueDate = issueDate;
         }
 
-        public override string ToString()
-        {
-
-            return "hello.crtyptic.world";
-            //return base.ToString();
-        }
-
         public string Tokenize(IMessageAuthenticationService messageAuthenticationService)
         {
             _messageAuthenticationService = messageAuthenticationService;
