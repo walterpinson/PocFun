@@ -5,6 +5,9 @@ using Infrastructure.SecurityApi.Models;
 
 namespace Infrastructure.SecurityApi.Controllers
 {
+    using System.Text;
+    using System.Web;
+
     public class TokenValidationController : ApiController
     {
         private readonly ITokenService _tokenService ;
@@ -23,7 +26,14 @@ namespace Infrastructure.SecurityApi.Controllers
         // POST api/tokenvalidation
         public bool Post(TokenValidationRequest request)
         {
-            return _tokenService.ValidateToken(request.Token, request.IpAddress);
+            var token = Base64ForUrlDecode(request.Token);
+            return _tokenService.ValidateToken(token, request.IpAddress);
+        }
+
+        private static string Base64ForUrlDecode(string encoded)
+        {
+            byte[] decodedBuffer = HttpServerUtility.UrlTokenDecode(encoded);
+            return Encoding.UTF8.GetString(decodedBuffer);
         }
     }
 }

@@ -5,6 +5,9 @@ using Infrastructure.SecurityApi.Models;
 
 namespace Infrastructure.SecurityApi.Controllers
 {
+    using System.Text;
+    using System.Web;
+
     public class TokenRequestController : ApiController
     {
         private readonly ITokenService _tokenService ;
@@ -23,7 +26,13 @@ namespace Infrastructure.SecurityApi.Controllers
         // POST api/tokenrequest
         public string Post(TokenRequest request)
         {
-            return _tokenService.GenerateToken(request.UserName, request.IpAddress, request.RequestDate);
+            return Base64ForUrlEncode(_tokenService.GenerateToken(request.UserName, request.IpAddress, request.RequestDate));
+        }
+
+        private static string Base64ForUrlEncode(string decoded)
+        {
+            byte[] encodedBuffer = Encoding.UTF8.GetBytes(decoded);
+            return HttpServerUtility.UrlTokenEncode(encodedBuffer);
         }
     }
 }
