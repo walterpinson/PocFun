@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Infrastructure.SecurityApi.Models
+﻿namespace Infrastructure.PocFunApi.Messages
 {
     public class TokenValidationRequest
     {

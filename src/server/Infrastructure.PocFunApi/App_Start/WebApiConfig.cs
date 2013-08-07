@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using Infrastructure.PocFunApi.Handlers;
 
 namespace Infrastructure.PocFunApi
 {
@@ -6,7 +7,14 @@ namespace Infrastructure.PocFunApi
     {
         public static void Register(HttpConfiguration config)
         {
-            //config.MapHttpAttributeRoutes();
+            //
+            // Configure Custom Message Handlers
+            config.MessageHandlers.Add(new ClientAuthorizationHandler());
+
+            //
+            // Configure routes
+
+//            config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
                 name: "JobSpecificJobApplicationsRoute",

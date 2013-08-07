@@ -65,16 +65,25 @@ namespace Infrastructure.Server
             //    1.4 Check if the token is valid
             // 2. Generate a token based on the input
 
-            // 1. Base64-decode and decrypt encrypted token
-            var serializedToken = _cryptoService.Decrypt(encryptedToken);
+            bool isValid;
 
-            // 2. JSON-deserialize the token
-            var contractResolver = new JsonPrivateSetterContractResolver();
-            var settings = new JsonSerializerSettings { ContractResolver = contractResolver };
-            var token = JsonConvert.DeserializeObject<Token>(serializedToken, settings);
+            try
+            {
+                // 1. Base64-decode and decrypt encrypted token
+                var serializedToken = _cryptoService.Decrypt(encryptedToken);
 
-            // 3. Determine whether or not the token is valid
-            var isValid = token.IsValid(_messageAuthenticationService, ipAddress);
+                // 2. JSON-deserialize the token
+                var contractResolver = new JsonPrivateSetterContractResolver();
+                var settings = new JsonSerializerSettings {ContractResolver = contractResolver};
+                var token = JsonConvert.DeserializeObject<Token>(serializedToken, settings);
+
+                // 3. Determine whether or not the token is valid
+                isValid = token.IsValid(_messageAuthenticationService, ipAddress);
+            }
+            catch(Exception)
+            {
+                isValid = false;
+            }
 
             return isValid;
         }
