@@ -25,10 +25,5 @@ namespace Infrastructure.PocFunApi
 
             DtoMapper.Configure();
         }
-
-        protected void Application_BeginRequest(object sender, EventArgs e)
-        {
-            HttpContext.Current.Response.AppendHeader("Access-Control-Allow-Origin", "*");
-        }
     }
 }
